@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create(
-            'comments', function (Blueprint $table) {
+            'comments',
+            function (Blueprint $table) {
                 $table->id();
                 $table->bigInteger('user_id');
                 $table->bigInteger('blog_id');

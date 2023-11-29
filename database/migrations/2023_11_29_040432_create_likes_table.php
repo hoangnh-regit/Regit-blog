@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create(
-            'likes', function (Blueprint $table) {
+            'likes',
+            function (Blueprint $table) {
                 $table->id();
                 $table->bigInteger('user_id');
                 $table->bigInteger('blog_id');
