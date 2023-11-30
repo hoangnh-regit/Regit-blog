@@ -1,0 +1,78 @@
+.containers {
+    .logo {
+        @include flexCenter();
+        @include mobile {
+            margin: 148px 0 91px 0;
+        }
+        @include desktop {
+            margin: 157px 0 75px 0;
+        }
+        img {
+            width: auto;
+            height: 61px;
+        }
+    }
+    .form {
+        @include mobile {
+            width: 402px;
+        }
+        @include desktop {
+            width: 570px;
+        }
+        margin: 0 auto;
+        h1 {
+            @include fontStyle($color-8, $font-noto-san-jp, 20px, 700);
+            margin: 0;
+        }
+        .form-input {
+            label {
+                display: block;
+                @include fontStyle($color-8, $font-noto-san-jp, 15px, 400);
+                padding: 16px 0 10px 0;
+                span {
+                    color: $color-10;
+                }
+            }
+            input {
+                width: 100%;
+                height: 40px;
+                border-radius: 4px;
+                border: 1px solid $color-5;
+                margin-bottom: 8px;
+                padding: 20px;
+            }
+        }
+        .button {
+            @include flexCenter();
+            button {
+                @include mobile {
+                    width: 197.618px;
+                }
+                @include desktop {
+                    width: 280px;
+                }
+                height: 40px;
+                @include mobile {
+                    margin: 33px 0 16px 0;
+                }
+                @include desktop {
+                    margin: 33px 0 11px 0;
+                }
+                border: 1px solid $color-9;
+                background-color: $color-9;
+                border-radius: 4px;
+                color: $color-3;
+            }
+        }
+        a {
+            @include flexCenter();
+            @include fontStyle($color-9, $font-noto-san-jp, 15px, 400);
+            @include mobile {
+                margin-bottom: 252px;
+            }
+            @include desktop {
+                margin-bottom: 264px;
+            }
+        }
+    }
+}
