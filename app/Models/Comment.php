@@ -17,12 +17,12 @@ class Comment extends Model
         'content',
     ];
 
-    public function user()
+    public function user(): belongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function blog()
+    public function blog(): belongsTo
     {
         return $this->belongsTo(Blog::class);
     }

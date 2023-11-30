@@ -16,7 +16,7 @@ class PasswordResetToken extends Model
         'expired_at',
     ];
 
-    public function user()
+    public function user(): belongsTo
     {
         return $this->belongsTo(User::class);
     }

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Blog extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'user_id',
         'title',
@@ -20,18 +21,23 @@ class Blog extends Model
         'status',
     ];
 
-    public function user()
+    public function user(): belongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function category()
+    public function category(): belongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function comments()
+    public function comments(): hasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function users(): belongsToMany
+    {
+        return $this->belongsToMany(User::class, 'likes', 'user_id', 'blog_id');
     }
 }

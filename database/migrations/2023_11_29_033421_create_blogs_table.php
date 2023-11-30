@@ -20,7 +20,7 @@ return new class extends Migration
                 $table->text('content');
                 $table->string('img')->nullable();
                 $table->bigInteger('category_id');
-                $table->boolean('status')->default(0);
+                $table->boolean('status')->default(0);  //status 0 isn't active , 1 is active 
                 $table->timestamps();
             }
         );
