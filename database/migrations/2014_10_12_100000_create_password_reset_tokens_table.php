@@ -19,7 +19,7 @@ return new class extends Migration
                 $table->string('token', 255);
                 $table->boolean('status')->default(0); //0 doesnt use 1 use
                 $table->datetime('expired_at')->nullable();
-                $table->timestamp('created_at')->nullable();
+                $table->timestamps();
             }
         );
     }

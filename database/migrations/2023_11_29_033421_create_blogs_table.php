@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->bigInteger('user_id');
                 $table->string('title', 255);
                 $table->text('content');
-                $table->string('img')->nullable();
+                $table->string('img', 255)->nullable();
                 $table->bigInteger('category_id');
                 $table->boolean('status')->default(0);  //status 0 isn't active , 1 is active 
                 $table->timestamps();
