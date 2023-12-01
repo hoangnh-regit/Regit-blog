@@ -20,8 +20,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-    const ACTIVE = 1;
-    const INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 0;
 
     protected $fillable = [
         'name',
@@ -29,6 +29,9 @@ class User extends Authenticatable
         'password',
         'image',
         'role',
+        'email_verified_token',
+        'email_verified_at',
+        'status',
     ];
 
     /**

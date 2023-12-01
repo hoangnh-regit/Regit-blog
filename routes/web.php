@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('auth')->group(function () {
+    Route::get('/register', [AuthController::class, 'register'])->name('get.register');
+    Route::post('/register', [AuthController::class, 'postRegister'])->name('post.register');
+    Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])->name('verify.email');
 });
-Route::view('/register', 'register');
-Route::post('/register', [UserController::class, 'register'])->name('register');

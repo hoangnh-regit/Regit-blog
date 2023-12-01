@@ -2,7 +2,7 @@ import './bootstrap';
 
 const toggleBtns = document.getElementsByClassName('toggle-btn')[0];
 const navbarLinks = document.getElementsByClassName('navbar-links')[0];
-var prevScrollpos = window.pageYOffset;
+let prevScrollpos = window.pageYOffset;
 
 toggleBtns.addEventListener('click', (event) => {
     event.preventDefault(); // Ngăn chặn hành vi mặc định của sự kiện click
@@ -10,7 +10,7 @@ toggleBtns.addEventListener('click', (event) => {
 });
 
 window.onscroll = function () {
-    var currentScrollPos = window.pageYOffset;
+    const currentScrollPos = window.pageYOffset;
     if (prevScrollpos > currentScrollPos) {
         document.getElementById("navbar").style.top = "0";
     } else {
