@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('auth')->group(function () {
+    Route::get('/register', [AuthController::class, 'register'])->name('get.register');
+    Route::post('/register', [AuthController::class, 'postRegister'])->name('post.register');
+    Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])->name('verify.email');
 });
