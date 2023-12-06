@@ -1,13 +1,7 @@
-@extends('layouts.header')
+@extends('layouts.base')
 @section('title', 'Regit Blog | Register')
 
-<body>
-    @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-    @if (session('error'))
-        <div class="alert alert-danger">{{ session('error') }}</div>
-    @endif
+@section('content')
     <div class="containers">
         <div class="logo">
             <img src="{{ asset('images/Group_155.png') }}" alt="">
@@ -47,11 +41,9 @@
                 <div class="button">
                     <button class="" type="submit">Sign up</button>
                 </div>
-                <a href="">{{ __('auth.have_account') }}Login</a>
+                <a class="end" href="{{ route('login') }}">{{ __('auth.have_account') }}</a>
             </form>
         </div>
     </div>
     <script src="{{ asset('bootstrap-5.3.2-dist/js/bootstrap.js') }}"></script>
-</body>
-
-</html>
+@endsection

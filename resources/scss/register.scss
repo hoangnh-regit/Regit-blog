@@ -53,6 +53,29 @@
       }
     }
 
+    .option {
+      @include flexSpace();
+      @include fontStyle($color-8, $font-noto-san-jp, 15px, 400);
+      margin-top: 20px;
+
+      .remember {
+        display: inline-flex;
+
+        input {
+          margin-right: 7.5px;
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .forgot {
+        a {
+          text-decoration: none;
+          color: $color-9;
+        }
+      }
+    }
+
     .button {
       @include flexCenter();
 
@@ -82,7 +105,7 @@
       }
     }
 
-    a {
+    .end {
       @include flexCenter();
       @include fontStyle($color-9, $font-noto-san-jp, 15px, 400);
 
