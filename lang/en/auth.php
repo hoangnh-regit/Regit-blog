@@ -8,7 +8,6 @@
         'hi_user' => 'Congratulations! Hi',
         're_register' => 'you need to register again',
         'have_account' => 'Already have an account? Login',
-        'login' => 'Sign in',
         'forgot' => 'Forgot your password?',
         'register'=>'Don’t have an account? Sign up here',
         'account_block' => 'Your account is now blocked',
@@ -21,4 +20,9 @@
         'error_email_password' => 'Email or password is invalid',
         'new_password' => 'Check your email to get new password',
         'email_invalid' => 'Your email address is invalid',
+        'login' => 'Sign in',
+        'top' => 'Top',
+        'logout' => 'Logout',
+        'my_profile' => 'My Profile',
+        'sign_up' => 'Register',
     ];
