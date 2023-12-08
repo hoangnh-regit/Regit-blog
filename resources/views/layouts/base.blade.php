@@ -11,3 +11,10 @@
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
     <title>@yield('title')</title>
 </head>
+
+<body>
+    @include('components.message')
+    @yield('content')
+</body>
+
+</html>
