@@ -6,6 +6,8 @@
         'upload_image' => 'Upload image',
         'description' => 'Description',
         'submit' => 'Submit',
-        
-
+        'not_approved' => 'Not Approved',
+        'delete_blog' => 'Delete blog',
+        'related' => 'Related',
+        'comment' => 'Comment',
     ];

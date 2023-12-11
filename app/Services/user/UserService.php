@@ -8,6 +8,6 @@ class UserService
 {
     public function profile(): array
     {
-        return Auth::user()->only('name', 'email', 'status');
+        return Auth::user()->only('name', 'email');
     }
 }

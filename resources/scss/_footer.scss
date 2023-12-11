@@ -1,7 +1,7 @@
 footer {
   @include flexCenter();
   height: 94px;
-  background-color: #000000;
+  background-color: $color-18;
   margin-top: 40px;
 
   p {

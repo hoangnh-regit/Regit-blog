@@ -25,4 +25,6 @@
         'logout' => 'Logout',
         'my_profile' => 'My Profile',
         'sign_up' => 'Register',
+        'your_blog' => 'Your Blogs',
+        'liked' => 'Liked',
     ];

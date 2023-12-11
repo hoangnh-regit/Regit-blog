@@ -1,5 +1,17 @@
 import './bootstrap';
 
+$(document).ready(function() {
+  $("#show1").click(function() {
+      $(".row1").show();
+      $(".row2").hide();
+  });
+
+  $("#show2").click(function() {
+      $(".row2").show();
+      $(".row1").hide();
+  });
+});
+
 const toggleBtns = document.getElementsByClassName('toggle-btn')[0];
 const navbarLinks = document.getElementsByClassName('navbar-links')[0];
 let prevScrollpos = window.pageYOffset;

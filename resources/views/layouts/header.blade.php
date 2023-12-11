@@ -20,7 +20,8 @@
                     </form>
                     <form action="{{ route('blogs.create') }}" method="post">
                         @csrf
-                        <button type="button" class="second">{{ __('title.create_blog') }}</button>
+                        @method('get')
+                        <button class="second">{{ __('title.create_blog') }}</button>
                     </form>
                     <li><a class="third">{{ auth()->user()->name }}</a></li>
                     <li>
