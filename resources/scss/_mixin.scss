@@ -31,12 +31,16 @@ $width: 768px;
   justify-content: center;
 }
 
-@mixin fontStyle(
-  $color: $color-1,
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@mixin fontStyle($color: $color-1,
   $font: $font-noto-san-jp,
   $size: 18px,
-  $weight: 700
-) {
+  $weight: 700) {
   color: $color;
   font-family: $font;
   font-size: $size;
