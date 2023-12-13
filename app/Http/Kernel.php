@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => \App\Http\Middleware\CheckIsAdmin::class,
         'status' => \App\Http\Middleware\CheckStatusUser::class,
+        'view.blog.not.approved' => \App\Http\Middleware\ViewBlogNotApproved::class,
     ];
 }
