@@ -19,6 +19,12 @@ class BlogController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+    public function home()
+    {
+        return view(self::PATH_VIEW.__FUNCTION__);
+    }
+
     public function create()
     {
         $categories = $this->categoryService->getAll();

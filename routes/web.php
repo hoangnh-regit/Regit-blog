@@ -31,7 +31,6 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth','status'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::resource('blogs', BlogController::class);
     Route::prefix('user')->group(function () {
         Route::get('/home', [UserController::class, 'index'])->name('home');
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
@@ -43,4 +42,11 @@ Route::middleware(['auth','admin'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('index');
     });
+});
+
+Route::group(['as' => 'blogs.', 'prefix' => 'blogs'], function () {
+    Route::get('/home', [BlogController::class, 'home'])->name('home');
+    Route::get('/{blog}', [BlogController::class, 'show'])->name('show')->middleware('view.blog.not.approved');
+    Route::get('/create', [BlogController::class, 'create'])->name('create');
+    Route::post('/store', [BlogController::class, 'store'])->name('store');
 });
