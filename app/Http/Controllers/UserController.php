@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\user\BlogService;
 use App\Services\user\UserService;
 
 class UserController extends Controller
 {
 
-    public $userService;
-
-    public function __construct(UserService $userService)
+    public function __construct(private UserService $userService, private BlogService $blogService)
     {
-        $this->userService = $userService;
     }
 
     public function index()
     {
         $response = $this->userService->profile();
-        return view('user.profile', compact('response'));
+        $getMyBlogs = $this->blogService->getMyBlogs(auth()->user()->id);
+        return view('user.profile', compact('response', 'getMyBlogs'));
     }
 
     public function dashboard()

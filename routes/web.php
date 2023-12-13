@@ -38,6 +38,7 @@ Route::middleware(['auth','status'])->group(function () {
     });
 });
 
+Route::view('detail', 'blogs.show');
 Route::middleware(['auth','admin'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('index');

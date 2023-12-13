@@ -4,6 +4,7 @@ namespace App\Services\user;
 
 use Exception;
 use App\Models\Blog;
+use Illuminate\Database\Eloquent\Collection;
 
 class BlogService
 {
@@ -12,7 +13,7 @@ class BlogService
         try {
             $imageName = null;
             if (isset($data['img'])) {
-                $imageName = $data['img']->store('blog_images');
+                $imageName = $data['img']->store('public/images');
             }
 
             return Blog::create([
@@ -25,5 +26,24 @@ class BlogService
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
+    }
+
+    public function show(int $id): Collection
+    {
+        try {
+            return Blog::with('category')
+                ->where('status', Blog::STATUS_ACTIVE)
+                ->where('id', '!=', $id)
+                ->orderBy('created_at', 'DESC')
+                ->limit(4)
+                ->get();
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
+    public function getMyBlogs(int $id): Collection
+    {
+        return Blog::with('category')->where('user_id', $id)->select('id', 'title', 'category_id', 'status', 'img', 'updated_at')->get();
     }
 }

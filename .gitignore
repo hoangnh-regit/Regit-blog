@@ -19,3 +19,5 @@ yarn-error.log
 /.vscode
 comment.txt
 /public/bootstrap-5.3.2-dist
+/public/boxicons-2.1.4
+/public/bootstrap-icons-1.11.2

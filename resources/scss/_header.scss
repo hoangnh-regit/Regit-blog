@@ -1,5 +1,6 @@
 header {
   height: auto;
+  z-index: 4000;
 
   @include mobile {
     .img {
