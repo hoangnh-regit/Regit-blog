@@ -29,6 +29,7 @@ Route::middleware(['guest'])->group(function () {
     });
 });
 
+Route::resource('blogs', BlogController::class);
 Route::middleware(['auth','status'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::prefix('user')->group(function () {

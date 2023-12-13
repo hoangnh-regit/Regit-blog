@@ -42,4 +42,10 @@ class BlogController extends Controller
         $relatedBlogs = $this->blogService->show($blog->id);
         return view(self::PATH_VIEW.__FUNCTION__, compact('blog', 'relatedBlogs'));
     }
+
+    public function edit(Blog $blog)
+    {
+        $categories = $this->categoryService->getAll();
+        return view(self::PATH_VIEW.__FUNCTION__, compact('blog', 'categories'));
+    }
 }

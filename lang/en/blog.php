@@ -10,4 +10,5 @@
         'delete_blog' => 'Delete blog',
         'related' => 'Related',
         'comment' => 'Comment',
+        'edit_blog' => 'Edit blog',
     ];

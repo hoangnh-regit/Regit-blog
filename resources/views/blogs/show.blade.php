@@ -22,11 +22,13 @@
             </div>
         </div>
         <div class="function">
-            <div class="approved">
-                <form action="">
-                    <button>{{ __('blog.not_approved') }}</button>
-                </form>
-            </div>
+            
+            @can('update', $blog)
+                <!-- The Current User Can Update The Post -->
+                <div class="approved">
+                    <a href="{{ route('blogs.edit', $blog) }}"> Edit</a>
+                </div>
+            @endcan
             <div class="delete">
                 <form action="">
                     <button>{{ __('blog.delete_blog') }}</button>
