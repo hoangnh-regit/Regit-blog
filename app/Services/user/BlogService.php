@@ -34,7 +34,7 @@ class BlogService
             return Blog::with('category')
                 ->where('status', Blog::STATUS_ACTIVE)
                 ->where('id', '!=', $id)
-                ->orderBy('created_at', 'DESC')
+                ->inRandomOrder()
                 ->limit(4)
                 ->get();
         } catch (Exception $e) {
