@@ -1,7 +1,7 @@
 @include('layouts.header')
 <section class="content">
     <div>
-        <ul class="breadcrump">
+        <ul class="breadcrumb">
             <li><a href="">{{ __('title.home') }}</a></li>
             <li><a href="">{{ __('title.create_blog') }}</a></li>
         </ul>

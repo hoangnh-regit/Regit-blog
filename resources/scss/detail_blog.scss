@@ -44,17 +44,20 @@
     .function {
       @include flexSpace;
       @include mobile {
+        flex-direction: column;
         width: 236px;
       }
 
       @include desktop {
-        width: 300px;
+        width: 380px;
       }
 
-      .approved {
+      .fn {
         width: 110px;
         height: 100%;
-        button {
+        button,
+        a {
+          display: block;
           @include fontStyle($color-3, $font-noto-san-jp, 15px, 500);
           width: 100%;
           height: 31px;
@@ -62,18 +65,15 @@
           border: none;
           border-radius: 3px;
         }
-      }
-
-      .delete {
-        width: 110px;
-        height: 100%;
-        button {
-          @include fontStyle($color-3, $font-noto-san-jp, 15px, 500);
-          width: 100%;
-          height: 31px;
+        .edit {
+          background-color: $color-24;
+          padding-top: 4px;
+          text-align: center;
+          text-decoration: none;
+          margin: 10px 0;
+        }
+        .delete {
           background-color: $color-21;
-          border: none;
-          border-radius: 3px;
         }
       }
     }

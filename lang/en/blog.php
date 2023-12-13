@@ -1,6 +1,7 @@
 <?php
     return [
         'blog_created' => 'Blog added successfully. Please wait for admin to approve',
+        'blog_updated' => 'Blog updated successfully. Please wait for admin to approve',
         'title' => 'Title',
         'category' => 'Category',
         'upload_image' => 'Upload image',
@@ -11,4 +12,6 @@
         'related' => 'Related',
         'comment' => 'Comment',
         'edit_blog' => 'Edit blog',
+        'approved' => 'Approved',
+        'edit' => 'Edit',
     ];

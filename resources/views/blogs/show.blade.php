@@ -1,7 +1,7 @@
 @include('layouts.header')
 <section class="content">
     <div>
-        <ul class="breadcrump">
+        <ul class="breadcrumb">
             <li><a href="">{{ __('title.home') }}</a></li>
             <li><a href="">{{ __('title.detail_blog') }}</a></li>
         </ul>
@@ -22,18 +22,29 @@
             </div>
         </div>
         <div class="function">
-            
-            @can('update', $blog)
-                <!-- The Current User Can Update The Post -->
-                <div class="approved">
-                    <a href="{{ route('blogs.edit', $blog) }}"> Edit</a>
-                </div>
-            @endcan
-            <div class="delete">
-                <form action="">
-                    <button>{{ __('blog.delete_blog') }}</button>
-                </form>
-            </div>
+            @if ($user && ($user->id === $blog->user_id || $user->role === \App\Models\User::ADMIN_ROLE))
+                @if ($blog->status == \App\Models\Blog::STATUS_ACTIVE)
+                    <div class="fn ">
+                        <button class="approved">{{ __('blog.approved') }}</button>
+                    </div>
+                @else
+                    <div class="fn ">
+                        <button class="approved">{{ __('blog.not_approved') }}</button>
+                    </div>
+                @endif
+                @can('checkUpdate', $blog)
+                    <div class="fn">
+                        <a class="edit" href="{{ route('blogs.edit', $blog) }}">{{ __('blog.edit') }}</a>
+                    </div>
+                    <div class="fn">
+                        <form action="" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="delete">{{ __('blog.delete_blog') }}</button>
+                        </form>
+                    </div>
+                @endcan
+            @endif
         </div>
     </div>
     <div class="image">
@@ -56,7 +67,6 @@
                         <img src="{{ asset('images/Rectangle_82.png') }}" class="" alt="Image of blog" />
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->title }}</h5>
-
                         </div>
                     </div>
                 </div>
