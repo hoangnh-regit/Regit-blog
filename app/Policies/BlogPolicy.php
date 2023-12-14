@@ -15,4 +15,9 @@ class BlogPolicy
     {
         return ($user->id === $blog->user_id || $user->role === User::ADMIN_ROLE);
     }
+
+    public function checkDelete(User $user, Blog $blog): bool
+    {
+        return ($user->id === $blog->user_id || $user->role === User::ADMIN_ROLE);
+    }
 }

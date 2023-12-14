@@ -1,5 +1,45 @@
 @import "breadcrumb";
 
+.modal-dialog {
+  margin-top: 300px;
+  .modal-content {
+    border-radius: 0px;
+    .modal-header {
+      .modal-title {
+        @include fontStyle($color-8, $font-noto-san-jp, 20px, 700);
+      }
+      button {
+        font-size: 12.5px;
+        position: absolute;
+        right: 12px;
+        top: 14px;
+      }
+    }
+    .modal-body {
+      margin: 45px auto 51px auto;
+      h3 {
+        @include fontStyle($color-8, $font-noto-san-jp, 15px, 400);
+      }
+    }
+    .modal-footer {
+      @include flexSpace;
+      .btnc {
+        @include fontStyle($color-3, $font-noto-san-jp, 20px, 400);
+        width: 80px;
+        height: 40px;
+        border-radius: 4px;
+        border: none;
+      }
+      .close {
+        background-color: $color-25;
+      }
+      .delete {
+        background-color: $color-21;
+      }
+    }
+  }
+}
+
 .detail {
   @include mobile {
     margin: 0 42px 40px 42px;
