@@ -4,16 +4,20 @@ namespace App\Services\user;
 
 use Exception;
 use App\Models\Blog;
+use App\Http\Requests\BlogRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Collection;
 
 class BlogService
 {
+    const PATH_UPLOAD = 'public/images';
+
     public function store(array $data): Blog
     {
         try {
             $imageName = null;
             if (isset($data['img'])) {
-                $imageName = $data['img']->store('public/images');
+                $imageName = $data['img']->store(self::PATH_UPLOAD);
             }
 
             return Blog::create([
@@ -42,8 +46,31 @@ class BlogService
         }
     }
 
+    public function update(BlogRequest $request, Blog $blog): bool
+    {
+        try {
+            $data = $request->except('img');
+            if ($request->hasFile('img')) {
+                $data['img'] = Storage::put(self::PATH_UPLOAD, $request->file('img'));
+                if ($blog->img !== null && Storage::exists($blog->img)) {
+                    Storage::delete($blog->img);
+                }
+            }
+            $data['status'] = Blog::STATUS_INACTIVE;
+            return $blog->update($data);
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
     public function getMyBlogs(int $id): Collection
     {
         return Blog::with('category')->where('user_id', $id)->select('id', 'title', 'category_id', 'status', 'img', 'updated_at')->get();
+    }
+
+    public function approvedBlog(object $blog): bool
+    {
+        $status = $blog->status == Blog::STATUS_ACTIVE ? Blog::STATUS_INACTIVE : Blog::STATUS_ACTIVE;
+        return $blog->update(['status' => $status]);
     }
 }

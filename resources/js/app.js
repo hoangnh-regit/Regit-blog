@@ -17,6 +17,7 @@ const navbarLinks = document.getElementsByClassName('navbar-links')[0];
 let prevScrollpos = window.pageYOffset;
 const imageInput = document.getElementById('img');
 const imagePreview = document.getElementById('preview');
+const oldImage = document.getElementById('old')
 
 toggleBtns.addEventListener('click', (event) => {
     event.preventDefault(); // Ngăn chặn hành vi mặc định của sự kiện click
@@ -40,6 +41,7 @@ imageInput.addEventListener('change', function() {
     const reader = new FileReader();
     reader.onload = function(e) {
         imagePreview.style.display = 'block';
+        oldImage.style.display = 'none';
         imagePreview.src = e.target.result;
     }
     reader.readAsDataURL(file);

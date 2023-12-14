@@ -2,15 +2,12 @@
 
 .content {
   @include mobile {
-
     margin: 123px 40px 40px 40px;
   }
 
   @include desktop {
-
     margin: 123px 100px 0px 100px;
   }
-
 
   .create {
     @include mobile {
@@ -80,7 +77,14 @@
       }
     }
 
+    .outer {
+      width: 269px;
+    }
+
     .upload {
+      img {
+        width: 20%;
+      }
       .first {
         margin: 20px 0;
       }
@@ -108,7 +112,6 @@
         }
 
         height: 170px;
-
       }
     }
 
@@ -135,7 +138,6 @@
         color: white;
         border-radius: 4px;
         margin-top: 20px;
-
       }
     }
   }
