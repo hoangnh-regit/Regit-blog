@@ -56,7 +56,14 @@ class BlogController extends Controller
     {
         $this->authorize('checkUpdate', $blog);
         $this->blogService->update($request, $blog);
-        return redirect()->route('home')->with('succcess', __('blog.blog_updated'));
+        return redirect()->route('blogs.show', $blog)->with('succcess', __('blog.blog_updated'));
+    }
+
+    public function destroy(Blog $blog)
+    {
+        $this->authorize('checkDelete', $blog);
+        $this->blogService->delete($blog);
+        return redirect()->route('home')->with('success', __('blog.blog_deleted'));
     }
 
     public function approved(Blog $blog, User $user)

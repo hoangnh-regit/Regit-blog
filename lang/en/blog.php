@@ -14,4 +14,8 @@
         'edit_blog' => 'Edit blog',
         'approved' => 'Approved',
         'edit' => 'Edit',
+        'close' => 'Close',
+        'delete' => 'Delete',
+        'want_to_delete' => 'Are you sure want to delete this blog?',
+        'blog_deleted' => 'Blog deleted successfully',
     ];
