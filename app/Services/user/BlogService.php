@@ -63,6 +63,20 @@ class BlogService
         }
     }
 
+    public function delete(Blog $blog): bool
+    {
+        try {
+            if (!empty($blog->img) && Storage::exists($blog->img)) {
+                Storage::delete($blog->img);
+            }
+            $blog->comments()->delete();
+            $blog->likes()->detach();
+            return $blog->delete();
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
     public function getMyBlogs(int $id): Collection
     {
         return Blog::with('category')->where('user_id', $id)->select('id', 'title', 'category_id', 'status', 'img', 'updated_at')->get();

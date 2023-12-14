@@ -19,6 +19,7 @@
     @include('components.message')
     @yield('content')
     <script src="{{ asset('resources/js/app.js') }}"></script>
+    <script src="{{ asset('bootstrap-5.3.2-dist/js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>

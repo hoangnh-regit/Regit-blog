@@ -7,6 +7,27 @@
         </ul>
     </div>
 </section>
+<div class="fade modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ __('blog.delete') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h3>{{ __('blog.want_to_delete') }}</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close btnc" data-bs-dismiss="modal">{{ __('blog.close') }}</button>
+                <form action="{{ route('blogs.destroy', $blog) }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button class="delete btnc">{{ __('blog.delete') }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="detail">
     <div class="title">
         <h1>{{ $blog->title }}</h1>
@@ -36,12 +57,11 @@
                     <div class="fn">
                         <a class="edit" href="{{ route('blogs.edit', $blog) }}">{{ __('blog.edit') }}</a>
                     </div>
+                @endcan
+                @can('checkDelete', $blog)
                     <div class="fn">
-                        <form action="" method="post">
-                            @csrf
-                            @method('delete')
-                            <button class="delete">{{ __('blog.delete_blog') }}</button>
-                        </form>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            class="delete">{{ __('blog.delete_blog') }}</button>
                     </div>
                 @endcan
             @endif
