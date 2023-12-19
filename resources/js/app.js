@@ -1,4 +1,8 @@
 import './bootstrap';
+let prevScrollpos = window.pageYOffset;
+const imageInput = document.getElementById('img');
+const imagePreview = document.getElementById('preview');
+const oldImage = document.getElementById('old')
 
 $(document).ready(function() {
   $("#show1").click(function() {
@@ -10,19 +14,13 @@ $(document).ready(function() {
       $(".row2").show();
       $(".row1").hide();
   });
+  
+  $('.toggle-btn').on('click', function(event) {
+      event.preventDefault();
+      $('.navbar-links').toggleClass('active');
+  });
 });
 
-const toggleBtns = document.getElementsByClassName('toggle-btn')[0];
-const navbarLinks = document.getElementsByClassName('navbar-links')[0];
-let prevScrollpos = window.pageYOffset;
-const imageInput = document.getElementById('img');
-const imagePreview = document.getElementById('preview');
-const oldImage = document.getElementById('old')
-
-toggleBtns.addEventListener('click', (event) => {
-    event.preventDefault(); // Ngăn chặn hành vi mặc định của sự kiện click
-    navbarLinks.classList.toggle('active');
-});
 
 window.onscroll = function () {
     const currentScrollPos = window.pageYOffset;

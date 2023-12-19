@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Requests\BlogRequest;
-use App\Services\user\BlogService;
-use App\Services\user\CategoryService;
+use App\Services\User\BlogService;
+use App\Services\User\CategoryService;
 
 class BlogController extends Controller
 {
@@ -21,9 +22,12 @@ class BlogController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function home()
+    public function home(Request $request)
     {
-        return view(self::PATH_VIEW.__FUNCTION__);
+        $categories = $this->categoryService->getAll();
+        $data = $request->only('search', 'category_id');
+        $blogs = $this->blogService->index($data);
+        return view(self::PATH_VIEW . __FUNCTION__, compact('blogs', 'categories', 'data'));
     }
 
     public function create()

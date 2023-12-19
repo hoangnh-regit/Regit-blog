@@ -7,9 +7,10 @@
                 <a href="" class="logo"><img class="img" src="{{ asset('/images/Group_155.png') }}"
                         alt="" /></a>
                 <div class="form-search">
-                    <form class="box" action="">
-                        <input class="search" type="search" placeholder="Search blog" />
-                        <button><i class="bx bx-search"></i></button>
+                    <form class="box" action="{{ route('blogs.home') }}" method="GET">
+                        <input class="search" type="text" name="search" placeholder="Search..."
+                            value="{{ old('search') }}">
+                        <button type="submit"><i class="bx bx-search"></i></button>
                     </form>
                 </div>
             </nav>
