@@ -7,7 +7,7 @@
                 <a href="" class="logo"><img class="img" src="{{ asset('/images/Group_155.png') }}"
                         alt="" /></a>
                 <div class="form-search">
-                    <form class="box" action="{{ route('blogs.home') }}" method="GET">
+                    <form class="box" action="{{ route('home') }}" method="GET">
                         <input class="search" type="text" name="search" placeholder="Search..."
                             value="{{ old('search') }}">
                         <button type="submit"><i class="bx bx-search"></i></button>

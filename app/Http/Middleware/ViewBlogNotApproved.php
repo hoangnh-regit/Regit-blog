@@ -24,6 +24,6 @@ class ViewBlogNotApproved
             return $next($request);
         }
 
-        return redirect()->route('blogs.home')->with('error', __('auth.invalid'));
+        return redirect()->route('home')->with('error', __('auth.invalid'));
     }
 }

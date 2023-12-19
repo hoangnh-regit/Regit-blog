@@ -3,7 +3,7 @@
 <section class="">
     <div class="list-title">
         <h1 class="">{{ __('title.list_blog') }}</h1>
-        <form method="GET" action="{{ route('blogs.home') }}">
+        <form method="GET" action="{{ route('home') }}">
             <div class="category">
                 <select name="category_id" id="categorySelect" class="select" onchange="this.form.submit()">
                     <option value="">--</option>
