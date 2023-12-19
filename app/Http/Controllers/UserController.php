@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\user\BlogService;
-use App\Services\user\UserService;
+use App\Services\User\BlogService;
+use App\Services\User\UserService;
 
 class UserController extends Controller
 {

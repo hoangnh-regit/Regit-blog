@@ -18,4 +18,5 @@
         'delete' => 'Delete',
         'want_to_delete' => 'Are you sure want to delete this blog?',
         'blog_deleted' => 'Blog deleted successfully',
+        'read_more' => 'Read more',
     ];

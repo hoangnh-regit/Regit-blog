@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\user;
+namespace App\Services\User;
 
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Collection;
