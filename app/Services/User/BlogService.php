@@ -1,16 +1,36 @@
 <?php
 
-namespace App\Services\user;
+namespace App\Services\User;
 
 use Exception;
 use App\Models\Blog;
 use App\Http\Requests\BlogRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class BlogService
 {
     const PATH_UPLOAD = 'public/images';
+
+    public function index(array $data): LengthAwarePaginator
+    {
+        try {
+            $query = Blog::with('user')
+                ->where('status', Blog::STATUS_ACTIVE)
+                ->orderBy('created_at', 'DESC');
+            
+            if (data_get($data, 'search')) {
+                $query->where('title', 'like', '%' . $data['search'] . '%');
+            }
+            if (data_get($data, 'category_id')) {
+                $query->where('category_id', $data['category_id']);
+            }
+            return $query->paginate(config('length.paginate'));
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
 
     public function store(array $data): Blog
     {
