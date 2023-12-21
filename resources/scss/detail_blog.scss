@@ -210,6 +210,19 @@
       }
     }
 
+    .send {
+      &:hover {
+        color: $color-4;
+      }
+      border: 0px;
+      font-size: 40px;
+      position: absolute;
+      right: 4px;
+      top: 2px;
+      color: $color-20;
+      background-color: $color-3;
+    }
+
     .list {
       display: flex;
       margin: 8px 0;
@@ -233,7 +246,11 @@
         h5 {
           @include fontStyle($color-8, $font-noto-san-jp, 24px, 700);
         }
-
+        .comment-content {
+          .edit-input {
+            display: none;
+          }
+        }
         p {
           &:first-child {
             @include fontStyle($color-8, $font-noto-san-jp, 14px, 400);

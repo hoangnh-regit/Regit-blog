@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Admin\AdminController;
 
 /*
@@ -32,10 +33,13 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth','status'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::prefix('user')->group(function () {
-        Route::get('/home', [UserController::class, 'index'])->name('home');
+        Route::get('/home', [UserController::class, 'index'])->name('user.home');
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     });
     Route::resource('blogs', BlogController::class);
+    Route::group(['as' => 'comments.', 'prefix' => 'comments'], function () {
+        Route::post('/store/{blog_id}', [CommentController::class, 'store'])->name('store');
+    });
 });
 
 Route::group(['as' => 'blogs.', 'prefix' => 'blogs'], function () {

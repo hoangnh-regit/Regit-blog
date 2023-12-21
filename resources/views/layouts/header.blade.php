@@ -29,7 +29,7 @@
                         <div class="user-btn">
                             <p class="user"><i class="fouth bx bx-user-circle"></i></p>
                             <div class="user-list">
-                                <a href="{{ route('home') }}">{{ __('auth.my_profile') }}</a>
+                                <a href="{{ route('user.home') }}">{{ __('auth.my_profile') }}</a>
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
                                     <button id="logoutBtn">{{ __('auth.logout') }}</button>
@@ -55,7 +55,8 @@
                 <a href="" class="toggle-btn" id="toggle">
                     <i class="bx bx-menu"></i>
                 </a>
-                <a href="" class="logo"><img src="{{ asset('/images/Group_155.png') }}" alt="" /></a>
+                <a href="{{ route('home') }}" class="logo"><img src="{{ asset('/images/Group_155.png') }}"
+                        alt="" /></a>
                 <a href="" class="search-btn">
                     <i class="bx bx-search"></i>
                 </a>

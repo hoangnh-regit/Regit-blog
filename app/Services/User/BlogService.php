@@ -97,6 +97,11 @@ class BlogService
         }
     }
 
+    public function loadBlog(Blog $blog): Blog
+    {
+        return $blog->load('comments.user');
+    }
+
     public function getMyBlogs(int $id): Collection
     {
         return Blog::with('category')->where('user_id', $id)->select('id', 'title', 'category_id', 'status', 'img', 'updated_at')->get();
