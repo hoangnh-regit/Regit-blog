@@ -35,7 +35,8 @@
     <div class="author-function">
         <div class="author">
             <div class="avatar">
-                <img src="{{ asset('/images/team-1.jpg') }}" alt="">
+                <img src="{{ Storage::exists($blog->user->image) ? Storage::url($blog->user->image) : asset($blog->user->image) }}"
+                    alt="">
             </div>
             <div class="name">
                 <h5>{{ $blog->user->name }}</h5>
@@ -43,28 +44,35 @@
             </div>
         </div>
         <div class="function">
-            @if ($user && ($user->id === $blog->user_id || $user->role === \App\Models\User::ADMIN_ROLE))
-                @if ($blog->status == \App\Models\Blog::STATUS_ACTIVE)
-                    <div class="fn ">
-                        <button class="approved">{{ __('blog.approved') }}</button>
-                    </div>
-                @else
-                    <div class="fn ">
-                        <button class="approved">{{ __('blog.not_approved') }}</button>
-                    </div>
+            @auth
+                <div id="data" comment-create-route="{{ route('comments.store', $blog->id) }}"
+                    error-message="{{ __('auth.error') }}"
+                    image-user={{ Storage::exists($blog->user->image) ? Storage::url($blog->user->image) : asset($blog->user->image) }}>
+                </div>
+                @php $user = auth()->user() @endphp
+                @if ($user->id === $blog->user_id || $user->role === \App\Models\User::ADMIN_ROLE)
+                    @if ($blog->status == \App\Models\Blog::STATUS_ACTIVE)
+                        <div class="fn ">
+                            <button class="approved">{{ __('blog.approved') }}</button>
+                        </div>
+                    @else
+                        <div class="fn ">
+                            <button class="approved">{{ __('blog.not_approved') }}</button>
+                        </div>
+                    @endif
+                    @can('checkUpdate', $blog)
+                        <div class="fn">
+                            <a class="edit" href="{{ route('blogs.edit', $blog) }}">{{ __('blog.edit') }}</a>
+                        </div>
+                    @endcan
+                    @can('checkDelete', $blog)
+                        <div class="fn">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                class="delete">{{ __('blog.delete_blog') }}</button>
+                        </div>
+                    @endcan
                 @endif
-                @can('checkUpdate', $blog)
-                    <div class="fn">
-                        <a class="edit" href="{{ route('blogs.edit', $blog) }}">{{ __('blog.edit') }}</a>
-                    </div>
-                @endcan
-                @can('checkDelete', $blog)
-                    <div class="fn">
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                            class="delete">{{ __('blog.delete_blog') }}</button>
-                    </div>
-                @endcan
-            @endif
+            @endauth
         </div>
     </div>
     <div class="image">
@@ -93,10 +101,24 @@
             @endforeach
         </div>
     </div>
+
     <h3>{{ __('blog.comment') }}</h3>
     <div class="border-hr">
         <hr>
     </div>
+    <div class="comment">
+        @auth
+            <div class="input">
+                <img src="{{ Storage::exists($user->image) ? Storage::url($user->image) : asset($user->image) }}"
+                    alt="">
+                <form>
+                    <textarea name="content" id="contentComment" cols="30" rows="10" placeholder="Comment"></textarea>
+                    <button id="commentForm" class="send"><i class='bx bx-send'></i></button>
+                    <p id="error" class="btn btn-danger"></p>
+                </form>
+            </div>
+        @endauth
+        @include('components.comment')
+    </div>
 </div>
-<script src="{{ asset('resources/js/app.js') }}"></script>
 @include('layouts.footer')

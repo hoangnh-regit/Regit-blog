@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\BlogRequest;
 use App\Services\User\BlogService;
+use App\Services\User\CommentService;
 use App\Services\User\CategoryService;
 
 class BlogController extends Controller
@@ -14,8 +15,11 @@ class BlogController extends Controller
     
     const PATH_VIEW = 'blogs.';
 
-    public function __construct(private CategoryService $categoryService, private BlogService $blogService)
-    {
+    public function __construct(
+        private CategoryService $categoryService,
+        private BlogService $blogService,
+        private CommentService $commentService
+    ) {
     }
 
     /**
@@ -44,9 +48,9 @@ class BlogController extends Controller
 
     public function show(Blog $blog)
     {
-        $user = auth()->user();
         $relatedBlogs = $this->blogService->show($blog->id);
-        return view(self::PATH_VIEW.__FUNCTION__, compact('blog', 'relatedBlogs', 'user'));
+        $blog = $this->blogService->loadBlog($blog);
+        return view(self::PATH_VIEW.__FUNCTION__, compact('blog', 'relatedBlogs'));
     }
 
     public function edit(Blog $blog)
