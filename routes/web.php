@@ -39,6 +39,8 @@ Route::middleware(['auth','status'])->group(function () {
     Route::resource('blogs', BlogController::class);
     Route::group(['as' => 'comments.', 'prefix' => 'comments'], function () {
         Route::post('/store/{blog_id}', [CommentController::class, 'store'])->name('store');
+        Route::put('/update/{id}', [CommentController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [CommentController::class, 'destroy'])->name('delete');
     });
 });
 

@@ -18,4 +18,24 @@ class CommentService
             throw new Exception($e->getMessage());
         }
     }
+
+    public function update(array $data, Comment $comment): bool
+    {
+        try {
+            return $comment->update([
+                    'content' => $data['content'],
+                ]);
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
+    public function destroy(Comment $comment): bool
+    {
+        try {
+            return $comment->delete();
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
 }
