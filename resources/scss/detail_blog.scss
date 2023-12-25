@@ -133,6 +133,19 @@
     @include fontStyle($color-22, $font-noto-san-jp, 14px, 400);
   }
 
+  .like {
+    button,
+    a {
+      font-size: 30px;
+      border: none;
+      background-color: transparent;
+      color: $color-18;
+    }
+    span {
+      font-size: 30px;
+    }
+  }
+
   .related {
     @include flexCenter;
     margin: 0;

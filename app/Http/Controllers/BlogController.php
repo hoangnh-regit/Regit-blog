@@ -50,7 +50,8 @@ class BlogController extends Controller
     {
         $relatedBlogs = $this->blogService->show($blog->id);
         $blog = $this->blogService->loadBlog($blog);
-        return view(self::PATH_VIEW.__FUNCTION__, compact('blog', 'relatedBlogs'));
+        $liked = auth()->check() ? $blog->likes()->where('user_id', auth()->id())->exists() : false;
+        return view(self::PATH_VIEW.__FUNCTION__, compact('blog', 'relatedBlogs', 'liked'));
     }
 
     public function edit(Blog $blog)
