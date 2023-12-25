@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('boxicons-2.1.4/css/boxicons.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('bootstrap-icons-1.11.2/font/bootstrap-icons.min.css') }}" />
     <script src="{{ asset('jquery-3.6.0.min.js') }}"></script>
-    @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js', 'resources/js/comment.js'])
+    @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js', 'resources/js/comment.js', 'resources/js/like.js'])
     <title>@yield('title')</title>
 </head>
 
