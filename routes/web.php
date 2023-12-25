@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\Admin\AdminController;
 
 /*
@@ -42,6 +43,7 @@ Route::middleware(['auth','status'])->group(function () {
         Route::put('/update/{id}', [CommentController::class, 'update'])->name('update');
         Route::delete('/delete/{id}', [CommentController::class, 'destroy'])->name('delete');
     });
+    Route::post('/{blogId}/like', [LikeController::class, 'like'])->name('blogs.like');
 });
 
 Route::group(['as' => 'blogs.', 'prefix' => 'blogs'], function () {

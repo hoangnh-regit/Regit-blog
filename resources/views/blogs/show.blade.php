@@ -81,6 +81,18 @@
     <div class="description">
         <p>{{ $blog->content }}</p>
     </div>
+    <div class="like" data-like-route="{{ route('blogs.like', ['blogId' => $blog->id]) }}">
+        @auth
+            @if ($liked)
+                <button class="like-btn"><i class="bi bi-heart-fill"></i></button>
+            @else
+                <button class="like-btn"><i class="bi bi-heart"></i></button>
+            @endif
+        @else
+            <a href="{{ route('login') }}"><i class="bi bi-heart"></i></a>
+        @endauth
+        <span class="count-like">{{ $blog->likes()->count() }}</span>
+    </div>
     <div class="related">
         <h3>{{ __('blog.related') }}</h3>
     </div>
