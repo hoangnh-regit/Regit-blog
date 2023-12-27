@@ -6,10 +6,12 @@ namespace App\Models;
 use App\Models\Blog;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\PasswordResetToken;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -65,5 +67,18 @@ class User extends Authenticatable
     public function blogs(): HasMany
     {
         return $this->hasMany(Blog::class);
+    }
+
+    public function likes(): BelongsToMany
+    {
+        return $this->belongsToMany(Blog::class, 'likes', 'user_id', 'blog_id');
+    }
+
+    public function getUserImageURL()
+    {
+        if (Storage::exists($this->image)) {
+            return Storage::url($this->image);
+        }
+        return asset('images/team-1.jpg');
     }
 }

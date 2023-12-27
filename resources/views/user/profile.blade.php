@@ -62,7 +62,7 @@
                         <div class="col-sm-4 bg-c-lite-green user-profile">
                             <div class="card-block text-center text-white">
                                 <div class="m-b-25">
-                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius"
+                                    <img src="{{ auth()->user()->getUserImageURL() }}" class="img-radius"
                                         alt="User-Profile-Image">
                                 </div>
                             </div>
@@ -78,7 +78,10 @@
                                     <p class="m-b-10 f-w-600">{{ __('profile.name') }}</p>
                                     <h6 class="text-muted f-w-400">{{ $response['name'] }}</h6>
                                 </div>
-                                <div><a href="" class="btn btn-success"> {{ __('profile.edit_profile') }}</a></div>
+                                <div>
+                                    <a href="{{ route('users.edit') }}" class="btn btn-success">
+                                        {{ __('profile.edit_profile') }}</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -93,44 +96,34 @@
                     @foreach ($getMyBlogs as $item)
                         <div class="col-xl-4 tag">
                             <div class="card">
-                                <img src="{{ asset(Storage::url($item->img)) }}" class=""
-                                    alt="Hollywood Sign on The Hill" />
+                                <img src="{{ Storage::url($item->img) }}" class=""
+                                    alt="{{ __('blog.image_blog') }}" />
                                 <div class="card-body">
                                     <p>{{ $item->category->name }}</p>
                                     <a href="{{ route('blogs.show', $item) }}" class="card-title">{{ $item->title }}</a>
-
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
-                <div class="row row2">
-                    <div class="col-xl-12 tag">
-                        <div class="card">
-                            <img src="{{ asset('images/Rectangle_82.png') }}" class=""
-                                alt="Hollywood Sign on The Hill" />
-                            <div class="card-body">
-                                <h5 class="card-title">Lorem ipsum dolor sit amet, adipiscing elit.</h5>
+                <div class="row2">
+                    <div class="row ">
+                        @foreach ($getLikedBlogs as $item)
+                            <div class="col-xl-4 tag">
+                                <div class="card">
+                                    <img src="{{ Storage::url($item->img) }}" class=""
+                                        alt="{{ __('blog.image_blog') }}" />
+                                    <div class="card-body">
+                                        <div class="category">
+                                            <span><i class="bi bi-bookshelf"></i></span>
+                                            <p>{{ $item->category->name }}</p>
+                                        </div>
+                                        <a href="{{ route('blogs.show', $item) }}"
+                                            class="card-title">{{ $item->title }}</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-12 tag">
-                        <div class="card">
-                            <img src="{{ asset('images/Rectangle_82.png') }}" class=""
-                                alt="Hollywood Sign on The Hill" />
-                            <div class="card-body">
-                                <h5 class="card-title">Lorem ipsum dolor sit amet, adipiscing elit.</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-12 tag">
-                        <div class="card">
-                            <img src="{{ asset('images/Rectangle_82.png') }}" class=""
-                                alt="Hollywood Sign on The Hill" />
-                            <div class="card-body">
-                                <h5 class="card-title">Lorem ipsum dolor sit amet, adipiscing elit.</h5>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

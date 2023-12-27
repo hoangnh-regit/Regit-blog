@@ -33,9 +33,12 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth','status'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::prefix('user')->group(function () {
-        Route::get('/home', [UserController::class, 'index'])->name('user.home');
+
+    Route::group(['as' => 'users.', 'prefix' => 'users'], function () {
+        Route::get('/home', [UserController::class, 'index'])->name('home');
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+        Route::get('/edit', [UserController::class, 'edit'])->name('edit');
+        Route::put('/update/{user}', [UserController::class, 'update'])->name('update');
     });
     Route::resource('blogs', BlogController::class);
     Route::group(['as' => 'comments.', 'prefix' => 'comments'], function () {

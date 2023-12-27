@@ -4,6 +4,7 @@ namespace App\Services\User;
 
 use Exception;
 use App\Models\Blog;
+use App\Models\User;
 use App\Http\Requests\BlogRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Collection;
@@ -105,6 +106,11 @@ class BlogService
     public function getMyBlogs(int $id): Collection
     {
         return Blog::with('category')->where('user_id', $id)->select('id', 'title', 'category_id', 'status', 'img', 'updated_at')->get();
+    }
+
+    public function getLikedBlogs(User $user): Collection
+    {
+        return $user->likes()->with('category')->get();
     }
 
     public function approvedBlog(object $blog): bool
