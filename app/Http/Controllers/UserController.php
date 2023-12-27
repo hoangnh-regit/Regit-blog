@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\User\BlogService;
 use App\Services\User\UserService;
+use App\Http\Requests\UpdateProfileRequest;
 
 class UserController extends Controller
 {
@@ -14,13 +15,28 @@ class UserController extends Controller
 
     public function index()
     {
+        $user = auth()->user();
         $response = $this->userService->profile();
-        $getMyBlogs = $this->blogService->getMyBlogs(auth()->user()->id);
-        return view('user.profile', compact('response', 'getMyBlogs'));
+        $myBlogLists = $this->blogService->getMyBlogs($user->id);
+        $likedBlogLists = $this->blogService->getLikedBlogs($user);
+        return view('user.profile', compact('response', 'myBlogLists', 'likedBlogLists'));
     }
 
     public function dashboard()
     {
         return view('user.dashboard');
+    }
+
+    public function edit()
+    {
+        $user = auth()->user();
+        return view('user.edit', compact('user'));
+    }
+
+    public function update(UpdateProfileRequest $request)
+    {
+        $user = auth()->user();
+        $this->userService->update($request->only('name', 'image'), $user);
+        return redirect()->route('users.home')->with('success', __('auth.profile_update'));
     }
 }

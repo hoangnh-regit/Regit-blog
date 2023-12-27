@@ -29,7 +29,7 @@
                         <div class="user-btn">
                             <p class="user"><i class="fouth bx bx-user-circle"></i></p>
                             <div class="user-list">
-                                <a href="{{ route('user.home') }}">{{ __('auth.my_profile') }}</a>
+                                <a href="{{ route('users.home') }}">{{ __('auth.my_profile') }}</a>
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
                                     <button id="logoutBtn">{{ __('auth.logout') }}</button>
