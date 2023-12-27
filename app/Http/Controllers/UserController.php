@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Services\User\BlogService;
 use App\Services\User\UserService;
 use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Requests\ChangePasswordRequest;
 
 class UserController extends Controller
 {
@@ -34,9 +34,20 @@ class UserController extends Controller
         return view('user.edit', compact('user'));
     }
 
-    public function update(UpdateProfileRequest $request, User $user)
+    public function update(UpdateProfileRequest $request)
     {
+        $user = auth()->user();
         $this->userService->update($request->only('name', 'image'), $user);
         return redirect()->route('users.home')->with('success', __('auth.profile_update'));
+    }
+
+    public function changePassword()
+    {
+        return view('user.change_password');
+    }
+
+    public function newPassword(ChangePasswordRequest $request)
+    {
+        $this->userService->newPassword($request->only('password'));
     }
 }

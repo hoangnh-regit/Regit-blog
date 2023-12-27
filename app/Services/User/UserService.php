@@ -30,4 +30,7 @@ class UserService
             throw new Exception($e->getMessage());
         }
     }
+
+    // public function newPassword(array $data){
+    // }
 }
