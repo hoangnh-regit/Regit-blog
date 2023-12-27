@@ -4,4 +4,5 @@
         'home' => 'Home',
         'detail_blog' => 'Detail Blog',
         'list_blog' => 'List Blog',
+        'edit_profile' => 'Edit Profile',
     ];
