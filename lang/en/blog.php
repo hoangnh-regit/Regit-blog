@@ -19,4 +19,9 @@
         'want_to_delete' => 'Are you sure want to delete this blog?',
         'blog_deleted' => 'Blog deleted successfully',
         'read_more' => 'Read more',
+        'email' => 'Email',
+        'upload_avatar' => 'Upload avartar',
+        'update' => 'Update',
+        'name' => 'Name',
+        'image_blog' => 'Image of blog',
     ];
