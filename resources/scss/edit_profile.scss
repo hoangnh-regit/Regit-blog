@@ -101,5 +101,9 @@
   a {
     width: 100%;
     text-decoration: double;
+    .cancel {
+      @include flexCenter;
+      margin-bottom: 30px;
+    }
   }
 }

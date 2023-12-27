@@ -2,11 +2,11 @@
 @section('content')
     <div class="create">
         <div class="nav">
-            <img src="{{ asset('images/Group_155.png') }}" alt="">
+            <a href="{{ route('home') }}"><img src="{{ asset('images/Group_155.png') }}" alt=""></a>
             <h1>{{ __('title.edit_profile') }}</h1>
         </div>
         <div class="form">
-            <form action="{{ route('users.update', $user) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('users.update') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="form-input ">
@@ -34,5 +34,7 @@
                 </div>
             </form>
         </div>
+        <a class="cancel" href="{{ route('users.home') }}">{{ __('auth.cancel') }}</a>
     </div>
+    @include('layouts.footer')
 @endsection

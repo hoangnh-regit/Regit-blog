@@ -38,7 +38,7 @@ Route::middleware(['auth','status'])->group(function () {
         Route::get('/home', [UserController::class, 'index'])->name('home');
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
         Route::get('/edit', [UserController::class, 'edit'])->name('edit');
-        Route::put('/update/{user}', [UserController::class, 'update'])->name('update');
+        Route::put('/update', [UserController::class, 'update'])->name('update');
         Route::get('/change-password', [UserController::class, 'changePassword'])->name('change_password');
         Route::put('/new-password', [UserController::class, 'newPassword'])->name('new_password');
     });

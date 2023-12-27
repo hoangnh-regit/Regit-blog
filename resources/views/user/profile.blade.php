@@ -97,7 +97,7 @@
                     <a href="#" id="show2">{{ __('profile.liked') }}</a>
                 </div>
                 <div class="row row1">
-                    @foreach ($getMyBlogs as $item)
+                    @foreach ($myBlogLists as $item)
                         <div class="col-xl-4 tag">
                             <div class="card">
                                 <img src="{{ Storage::url($item->img) }}" class=""
@@ -112,7 +112,11 @@
                 </div>
                 <div class="row2">
                     <div class="row ">
+<<<<<<< HEAD
                         @foreach ($getLikedBlogs as $item)
+=======
+                        @foreach ($likedBlogLists as $item)
+>>>>>>> 3bed52b (edit profile)
                             <div class="col-xl-4 tag">
                                 <div class="card">
                                     <img src="{{ Storage::url($item->img) }}" class=""

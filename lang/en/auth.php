@@ -29,4 +29,5 @@
         'liked' => 'Liked',
         'profile_update' => 'Profile updated successfully',
         'change_password' => 'Change password',
+        'cancel' => 'Cancel',
     ];

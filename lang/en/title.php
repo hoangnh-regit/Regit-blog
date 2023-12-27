@@ -10,5 +10,4 @@
         'confirm_password' => 'Confirm new password',
         'confirm' => 'Confirm',
         'cancel' => 'Cancel',
-
     ];

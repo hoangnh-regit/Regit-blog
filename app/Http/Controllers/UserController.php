@@ -18,9 +18,9 @@ class UserController extends Controller
     {
         $user = auth()->user();
         $response = $this->userService->profile();
-        $getMyBlogs = $this->blogService->getMyBlogs($user->id);
-        $getLikedBlogs = $this->blogService->getLikedBlogs($user);
-        return view('user.profile', compact('response', 'getMyBlogs', 'getLikedBlogs'));
+        $myBlogLists = $this->blogService->getMyBlogs($user->id);
+        $likedBlogLists = $this->blogService->getLikedBlogs($user);
+        return view('user.profile', compact('response', 'myBlogLists', 'likedBlogLists'));
     }
 
     public function dashboard()

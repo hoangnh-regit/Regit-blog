@@ -113,7 +113,7 @@ class BlogService
         return $user->likes()->with('category')->get();
     }
 
-    public function approvedBlog(object $blog): bool
+    public function approvedBlog(Blog $blog): bool
     {
         $status = $blog->status == Blog::STATUS_ACTIVE ? Blog::STATUS_INACTIVE : Blog::STATUS_ACTIVE;
         return $blog->update(['status' => $status]);

@@ -31,6 +31,7 @@ class UserService
         }
     }
 
-    // public function newPassword(array $data){
-    // }
+    public function newPassword()
+    {
+    }
 }
