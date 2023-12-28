@@ -78,9 +78,13 @@
                                     <p class="m-b-10 f-w-600">{{ __('profile.name') }}</p>
                                     <h6 class="text-muted f-w-400">{{ $response['name'] }}</h6>
                                 </div>
-                                <div>
+                                <div class="func">
                                     <a href="{{ route('users.edit') }}" class="btn btn-success">
                                         {{ __('profile.edit_profile') }}</a>
+                                </div>
+                                <div class="func">
+                                    <a href="{{ route('users.change_password') }}" class="btn btn-primary">
+                                        {{ __('title.change_password') }}</a>
                                 </div>
                             </div>
                         </div>
