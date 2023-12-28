@@ -29,4 +29,6 @@
         'liked' => 'Liked',
         'profile_update' => 'Profile updated successfully',
         'cancel' => 'Cancel',
+        'password_success' => 'Password changed successfully',
+        'password_incorrect' => 'The password is incorrect.',
     ];

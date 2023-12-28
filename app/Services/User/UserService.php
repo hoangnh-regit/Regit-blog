@@ -4,6 +4,7 @@ namespace App\Services\User;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class UserService
@@ -26,6 +27,18 @@ class UserService
             $user->update($data);
             Storage::delete($oldPathImg);
             return true;
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
+    public function updatePassword(array $data, User $user): bool
+    {
+        try {
+            $password = Hash::make($data['password']);
+            return $user->update([
+                'password' => $password,
+            ]);
         } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }

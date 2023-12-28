@@ -39,6 +39,8 @@ Route::middleware(['auth','status'])->group(function () {
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
         Route::get('/edit', [UserController::class, 'edit'])->name('edit');
         Route::put('/update', [UserController::class, 'update'])->name('update');
+        Route::get('/change-password', [UserController::class, 'changePassword'])->name('change_password');
+        Route::put('/change-password', [UserController::class, 'updatePassword'])->name('update_password');
     });
     Route::resource('blogs', BlogController::class);
     Route::group(['as' => 'comments.', 'prefix' => 'comments'], function () {
