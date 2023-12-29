@@ -62,7 +62,7 @@ Route::middleware(['auth','admin'])->group(function () {
         Route::put('/approved/{blog}', [BlogController::class, 'approved'])->name('approved');
         Route::delete('/delete/{blog}', [BlogController::class, 'destroy'])->name('delete');
     });
-    Route::prefix('admin')->group(function () {
-        Route::get('/dashboard', [AdminController::class, 'index'])->name('index');
+    Route::group(['as' => 'admins.', 'prefix' => 'admins'], function () {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
     });
 });

@@ -11,4 +11,6 @@
         'confirm' => 'Confirm',
         'regit_change_password' => 'Regit Blog | Change password',
         'change_password' => 'Change password',
+        'likes' => 'Likes',
+        'comments' => 'Comments',
     ];

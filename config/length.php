@@ -6,4 +6,5 @@
     'min_length' => 5,
     'paginate' => 9,
     'short_content' => 100,
+    'max_results' => 5,
   ];
