@@ -4,7 +4,7 @@
     <header>
         <div class="menu" id="navbar">
             <nav class="left nav-menu">
-                <a href="" class="logo"><img class="img" src="{{ asset('/images/Group_155.png') }}"
+                <a href="{{ route('home') }}" class="logo"><img class="img" src="{{ asset('/images/Group_155.png') }}"
                         alt="" /></a>
                 <div class="form-search">
                     <form class="box" action="{{ route('home') }}" method="GET">

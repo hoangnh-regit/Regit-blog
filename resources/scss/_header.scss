@@ -86,7 +86,6 @@ header {
               background-color: $color-6;
             }
           }
-
         }
 
         &.active {
@@ -146,7 +145,6 @@ header {
               border: 1px solid black;
               width: 74px;
               background-color: white;
-
             }
           }
         }
@@ -207,7 +205,6 @@ header {
               font-size: 19px;
             }
           }
-
         }
 
         .first,
@@ -257,7 +254,6 @@ header {
 
           .third {
             padding: 0;
-            text-transform: lowercase;
           }
 
           .fouth {
@@ -278,6 +274,6 @@ header {
   }
 
   .second {
-    background-color: $color-14 ;
+    background-color: $color-14;
   }
 }

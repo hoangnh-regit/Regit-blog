@@ -4,10 +4,10 @@
 @section('content')
     <div class="containers">
         <div class="logo">
-            <img src="{{ asset('images/Group_155.png') }}" alt="">
+            <a href="{{ route('home') }}" class="logo"><img class="img" src="{{ asset('/images/Group_155.png') }}"></a>
         </div>
         <div class="form">
-            <h1>{{ __('auth.login') }}</h1>
+            <h1>{{ __('auth.sign_in') }}</h1>
             <form action="{{ route('post.login') }}" method="POST">
                 @csrf
                 <div class="form-input">

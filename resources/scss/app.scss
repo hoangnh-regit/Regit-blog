@@ -8,12 +8,13 @@
 @import "profile";
 @import "home";
 @import "edit_profile";
+@import "message";
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	scroll-behavior: smooth;
-	list-style: none;
-	font-family: $font-noto-san-jp;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  list-style: none;
+  font-family: $font-noto-san-jp;
 }

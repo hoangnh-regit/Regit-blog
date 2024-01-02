@@ -4,7 +4,7 @@
 @section('content')
     <div class="containers">
         <div class="logo">
-            <img src="{{ asset('images/Group_155.png') }}" alt="">
+            <a href="{{ route('home') }}" class="logo"><img class="img" src="{{ asset('/images/Group_155.png') }}"></a>
         </div>
         <div class="form">
             <h1>Sign up</h1>
@@ -36,7 +36,7 @@
                     <input type="password" name="password_confirmation">
                     @error('password_confirmation')
                         <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    @enderror   
                 </div>
                 <div class="button">
                     <button class="" type="submit">Sign up</button>

@@ -51,15 +51,19 @@
                 </div>
                 @php $user = auth()->user() @endphp
                 @if ($user->id === $blog->user_id || $user->role === \App\Models\User::ADMIN_ROLE)
-                    @if ($blog->status == \App\Models\Blog::STATUS_ACTIVE)
-                        <div class="fn ">
-                            <button class="approved">{{ __('blog.approved') }}</button>
-                        </div>
-                    @else
-                        <div class="fn ">
-                            <button class="approved">{{ __('blog.not_approved') }}</button>
-                        </div>
-                    @endif
+                    <div class="fn ">
+                        @can('isAdmin', $user)
+                            <form action="{{ route('blogs.approved', $blog) }}" method="post">
+                                @csrf
+                                @method('put')
+                                <button
+                                    class="approved">{{ $blog->status == \App\Models\Blog::STATUS_ACTIVE ? __('blog.approved') : __('blog.not_approved') }}</button>
+                            </form>
+                        @else
+                            <button
+                                class="approved">{{ $blog->status == \App\Models\Blog::STATUS_ACTIVE ? __('blog.approved') : __('blog.not_approved') }}</button>
+                        @endcan
+                    </div>
                     @can('checkUpdate', $blog)
                         <div class="fn">
                             <a class="edit" href="{{ route('blogs.edit', $blog) }}">{{ __('blog.edit') }}</a>
@@ -76,7 +80,8 @@
         </div>
     </div>
     <div class="image">
-        <img src="{{ Storage::url($blog->img) }}" alt="">
+        <img src="{{ Storage::exists($blog->img) ? Storage::url($blog->img) : asset('images/Rectangle_82.png') }}"
+            class="" alt="Image of blog" /> 
     </div>
     <div class="description">
         <p>{{ $blog->content }}</p>
@@ -104,9 +109,10 @@
             @foreach ($relatedBlogs as $item)
                 <div class="col">
                     <div class="card">
-                        <img src="{{ asset('images/Rectangle_82.png') }}" class="" alt="Image of blog" />
+                        <img src="{{ Storage::exists($item->img) ? Storage::url($item->img) : asset('images/Rectangle_82.png') }}"
+                            class="" alt="Image of blog" />
                         <div class="card-body">
-                            <h5 class="card-title">{{ $item->title }}</h5>
+                            <a href="{{ route('blogs.show', $item) }}" class="card-title">{{ $item->title }}</a>
                         </div>
                     </div>
                 </div>
@@ -121,7 +127,7 @@
     <div class="comment">
         @auth
             <div class="input">
-                <img src="{{ Storage::exists($user->image) ? Storage::url($user->image) : asset($user->image) }}"
+                <img src="{{ Storage::exists($user->image) ? Storage::url($user->image) : asset('images/Rectangle_82.png') }}"
                     alt="">
                 <form>
                     <textarea name="content" id="contentComment" cols="30" rows="10" placeholder="Comment"></textarea>

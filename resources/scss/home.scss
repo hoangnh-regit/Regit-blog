@@ -97,14 +97,20 @@ section {
     padding: 0;
     margin-bottom: 10px;
     text-decoration: none;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
 
   p {
     @include fontStyle($color-4, $font-gyloy, 18px, 400);
     padding: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
     height: 50px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   .read-more {

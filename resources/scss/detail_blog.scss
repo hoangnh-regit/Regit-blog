@@ -171,8 +171,13 @@
     }
 
     .card-body {
-      h5 {
+      a {
         @include fontStyle($color-18, $font-noto-san-jp, 17px, 700);
+        text-decoration: none;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
       }
     }
   }

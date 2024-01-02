@@ -18,7 +18,8 @@
     <div class="row">
         @foreach ($blogs as $item)
             <div class="col-md-6 col-lg-4 col-sm-12">
-                <img src="{{ Storage::url($item->img) }}" class="card-img-top img-size" alt="..." />
+                <img class="card-img-top img-size"
+                    src="{{ Storage::exists($item->img) ? Storage::url($item->img) : asset('images/Rectangle_82.png') }}" />
                 <div class="card-body">
                     <div class="author-time">
                         <div class="author">
@@ -51,7 +52,7 @@
                         {{ $item->title }}.
                     </a>
                     <p class="card-text">
-                        {{ Str::limit($item->content, config('length.short_content')) . '...' }}
+                        {{ $item->content }}
                     </p>
                     <div class="read-more">
                         <a href="{{ route('blogs.show', $item) }}" class=""> {{ __('blog.read_more') }} <i

@@ -36,7 +36,7 @@ class BlogService
     public function store(array $data): Blog
     {
         try {
-            $imageName = null;
+            $imageName = 'images/Rectangle_82.png';
             if (isset($data['img'])) {
                 $imageName = $data['img']->store(self::PATH_UPLOAD);
             }

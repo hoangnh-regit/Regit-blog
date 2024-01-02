@@ -100,8 +100,8 @@
                     @foreach ($myBlogLists as $item)
                         <div class="col-xl-4 tag">
                             <div class="card">
-                                <img src="{{ Storage::url($item->img) }}" class=""
-                                    alt="{{ __('blog.image_blog') }}" />
+                                <img src="{{ Storage::exists($item->img) ? Storage::url($item->img) : asset($item->img) }}"
+                                    class="" alt="{{ __('blog.image_blog') }}" />
                                 <div class="card-body">
                                     <p>{{ $item->category->name }}</p>
                                     <a href="{{ route('blogs.show', $item) }}" class="card-title">{{ $item->title }}</a>
@@ -115,8 +115,8 @@
                         @foreach ($likedBlogLists as $item)
                             <div class="col-xl-4 tag">
                                 <div class="card">
-                                    <img src="{{ Storage::url($item->img) }}" class=""
-                                        alt="{{ __('blog.image_blog') }}" />
+                                    <img src="{{ Storage::exists($item->img) ? Storage::url($item->img) : asset($item->img) }}"
+                                        class="" alt="{{ __('blog.image_blog') }}" />
                                     <div class="card-body">
                                         <div class="category">
                                             <span><i class="bi bi-bookshelf"></i></span>
