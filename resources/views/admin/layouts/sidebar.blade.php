@@ -31,6 +31,23 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('blogs.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Blogs
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="{{ route('admins.blog.list') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List blog</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>
