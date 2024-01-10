@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BlogController as BlogControllerAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,5 +65,6 @@ Route::middleware(['auth','admin'])->group(function () {
     });
     Route::group(['as' => 'admins.', 'prefix' => 'admins'], function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::get('/blog/list', [BlogControllerAdmin::class, 'list'])->name('blog.list');
     });
 });
