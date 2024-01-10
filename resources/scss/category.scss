@@ -1,0 +1,24 @@
+#submitButton,
+#cancelButton,
+.hide-btn,
+.create-form {
+  display: none;
+}
+.create-form {
+  input {
+    width: 300px;
+    height: 38px;
+  }
+  button {
+    width: auto;
+    margin-bottom: 10px;
+  }
+  p {
+    display: block;
+    width: 30%;
+  }
+}
+
+.update-error {
+    width: 40%;
+}
