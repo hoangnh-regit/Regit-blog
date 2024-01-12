@@ -14,7 +14,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                <li class="nav-item menu-open">
+                <li class="nav-item">
                     <a href="{{ route('admins.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -44,6 +44,23 @@
                             <a href="{{ route('admins.blog.list') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List blog</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admins.categories.index') }}" class="nav-link">
+                        <i class="nav-icon bi bi-list-task"></i>
+                        <p>
+                            Categories
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admins.categories.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List categories</p>
                             </a>
                         </li>
                     </ul>
