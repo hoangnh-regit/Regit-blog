@@ -81,4 +81,9 @@ class User extends Authenticatable
         }
         return asset('images/team-1.jpg');
     }
+
+    public function scopeByUserRole($query)
+    {
+        return $query->where('role', self::USER_ROLE);
+    }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BlogController as BlogControllerAdmin;
 use App\Http\Controllers\Admin\CategoryController as CategoryControllerAdmin;
+use App\Http\Controllers\Admin\UserController as UserControllerAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,5 +69,6 @@ Route::middleware(['auth','admin'])->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/blog/list', [BlogControllerAdmin::class, 'list'])->name('blog.list');
         Route::resource('categories', CategoryControllerAdmin::class);
+        Route::resource('users', UserControllerAdmin::class);
     });
 });

@@ -8,4 +8,4 @@
 <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <link rel="stylesheet" href="{{ asset('bootstrap-icons-1.11.2/font/bootstrap-icons.min.css') }}" />
-@vite(['resources/css/admin.css', 'resources/scss/base_admin.scss', 'resources/js/category.js'])
+@vite(['resources/css/admin.css', 'resources/scss/base_admin.scss', 'resources/js/admin.js'])
