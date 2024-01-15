@@ -4,7 +4,7 @@
         <header>
             <div class="menu" id="navbar">
                 <nav class="left nav-menu">
-                    <a href="" class="logo"><img class="img" src="{{ asset('/images/Group_155.png') }}"
+                    <a href="{{ route('home') }}" class="logo"><img class="img" src="{{ asset('/images/Group_155.png') }}"
                             alt="" /></a>
                 </nav>
                 <nav class="right nav-menu create-blog">
@@ -91,7 +91,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-8 col-md-4">
+            <div class="col-xl-8 col-md-8">
                 <div class="navbar">
                     <a href="#" id="show1">{{ __('profile.your_blog') }}</a>
                     <a href="#" id="show2">{{ __('profile.liked') }}</a>
@@ -103,7 +103,7 @@
                                 <img src="{{ Storage::exists($item->img) ? Storage::url($item->img) : asset($item->img) }}"
                                     class="" alt="{{ __('blog.image_blog') }}" />
                                 <div class="card-body">
-                                    <p>{{ $item->category->name }}</p>
+                                    <p>{{ optional($item->category)->name }}</p>
                                     <a href="{{ route('blogs.show', $item) }}" class="card-title">{{ $item->title }}</a>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                                     <div class="card-body">
                                         <div class="category">
                                             <span><i class="bi bi-bookshelf"></i></span>
-                                            <p>{{ $item->category->name }}</p>
+                                            <p>{{ optional($item->category)->name }}</p>
                                         </div>
                                         <a href="{{ route('blogs.show', $item) }}"
                                             class="card-title">{{ $item->title }}</a>

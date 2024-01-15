@@ -9,7 +9,7 @@
 
     &:not(:last-child)::after {
       padding: 0px;
-      content: ">";
+      content: " > ";
       color: $color-16;
     }
 

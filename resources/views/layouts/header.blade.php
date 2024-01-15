@@ -16,30 +16,30 @@
             </nav>
             <nav class="right nav-menu create-blog">
                 @if (auth()->check())
-                    <form action="#" method="post">
-                        <button type="button" class="first loged">{{ __('auth.top') }}</button>
-                    </form>
+                    <a href="{{ route('home') }} "
+                        class="first loged {{ Request::routeIs('home') ? 'background' : '' }}">{{ __('auth.top') }}</a>
                     <form action="{{ route('blogs.create') }}" method="post">
                         @csrf
                         @method('get')
-                        <button class="second">{{ __('title.create_blog') }}</button>
+                        <button
+                            class="second {{ Request::routeIs('blogs.create') ? 'background' : '' }}">{{ __('title.create_blog') }}</button>
                     </form>
                     <li><a class="third">{{ auth()->user()->name }}</a></li>
                     <li>
                         <div class="user-btn">
                             <p class="user"><i class="fouth bx bx-user-circle"></i></p>
                             <div class="user-list">
-                                <a href="{{ route('users.home') }}">{{ __('auth.my_profile') }}</a>
+                                <a class="size" href="{{ route('users.home') }}">{{ __('auth.my_profile') }}</a>
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
-                                    <button id="logoutBtn">{{ __('auth.logout') }}</button>
+                                    <button class="size" id="logoutBtn">{{ __('auth.logout') }}</button>
                                 </form>
                             </div>
                         </div>
                     </li>
                 @else
                     <form action="#" method="post">
-                        <button type="button" class="first">{{ __('auth.top') }}</button>
+                        <button type="button" class="first background">{{ __('auth.top') }}</button>
                     </form>
                     <li>
                         <a href="{{ route('login') }}" class="third login">{{ __('auth.login') }}</a>

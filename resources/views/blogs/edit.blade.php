@@ -33,6 +33,9 @@
                 <label class="second" for="img">{{ __('blog.upload_image') }}</label>
                 <input type="file" hidden name="img" id="img">
                 <img src="" alt="" class="outer" id="preview">
+                @error('img')
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </div>
             <img src="{{ \Storage::url($blog->img) }}" alt="" id="old" class="outer">
             <div class="form-input description">

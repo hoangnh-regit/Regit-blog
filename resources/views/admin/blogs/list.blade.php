@@ -57,7 +57,7 @@
                                                                         href="{{ route('blogs.show', $item) }}">{{ $item->title }}</a>
                                                                 </td>
                                                                 <td>{{ $item->user->name }}</td>
-                                                                <td>{{ $item->category->name }}</td>
+                                                                <td>{{ optional($item->category)->name }}</td>
                                                                 <td class="banner"><img
                                                                         src="{{ Storage::url($item->img) }}"
                                                                         alt="">

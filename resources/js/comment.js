@@ -34,7 +34,7 @@ $(document).ready(function() {
 
         comment.find('.submit-comment-btn').on('click', function() {
             const commentContent = $(this).closest('.comment-content');
-            const editedText = commentContent.find('.edit-input').val();
+            const editedText = commentContent.find('.edit-input').val().replace(/</g, "&lt;").replace(/>/g, "&gt;");
             const updateUrl = `/comments/update/${comment.data('comment-id')}`;
             
             $.ajax({
@@ -71,7 +71,7 @@ $(document).ready(function() {
 
     $('#commentForm').on('click', function(ev) {
         ev.preventDefault();
-        const contentComment = $('#contentComment').val();
+        const contentComment = $('#contentComment').val().replace(/</g, "&lt;").replace(/>/g, "&gt;");
         const commentUrl = data.getAttribute('comment-create-route');
 
         $.ajax({

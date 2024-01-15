@@ -39,8 +39,8 @@ imageInput.addEventListener('change', function() {
     const reader = new FileReader();
     reader.onload = function(e) {
         imagePreview.style.display = 'block';
-        oldImage.style.display = 'none';
         imagePreview.src = e.target.result;
+        oldImage.style.display = 'none';
     }
     reader.readAsDataURL(file);
   } else {

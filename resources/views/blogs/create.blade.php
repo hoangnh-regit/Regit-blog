@@ -31,6 +31,9 @@
                 <label class="second" for="img">{{ __('blog.upload_image') }}</label>
                 <input type="file" hidden name="img" id="img">
                 <img src="" alt="" id="preview">
+                @error('img')
+                    <div class="error">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-input description">
                 <label for="">{{ __('blog.description') }} <span>*</span></label>

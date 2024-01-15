@@ -47,7 +47,7 @@
             @auth
                 <div id="data" comment-create-route="{{ route('comments.store', $blog->id) }}"
                     error-message="{{ __('auth.error') }}"
-                    image-user={{ Storage::exists($blog->user->image) ? Storage::url($blog->user->image) : asset($blog->user->image) }}>
+                    image-user={{ Storage::exists(auth()->user()->image) ? Storage::url(auth()->user()->image) : asset(auth()->user()->image) }}>
                 </div>
                 @php $user = auth()->user() @endphp
                 @if ($user->id === $blog->user_id || $user->role === \App\Models\User::ADMIN_ROLE)
@@ -70,7 +70,7 @@
                         </div>
                     @endcan
                     @can('checkDelete', $blog)
-                        <div class="fn">
+                          <div class="fn">
                             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                 class="delete">{{ __('blog.delete_blog') }}</button>
                         </div>
@@ -81,12 +81,12 @@
     </div>
     <div class="image">
         <img src="{{ Storage::exists($blog->img) ? Storage::url($blog->img) : asset('images/Rectangle_82.png') }}"
-            class="" alt="Image of blog" /> 
+            class="" alt="Image of blog" />
     </div>
     <div class="description">
         <p>{{ $blog->content }}</p>
     </div>
-    <div class="like" data-like-route="{{ route('blogs.like', ['blogId' => $blog->id]) }}">
+    <div class="like" data-like-route="{{ route('blogs.like', $blog->id) }}">
         @auth
             @if ($liked)
                 <button class="like-btn"><i class="bi bi-heart-fill"></i></button>
@@ -119,7 +119,6 @@
             @endforeach
         </div>
     </div>
-
     <h3>{{ __('blog.comment') }}</h3>
     <div class="border-hr">
         <hr>
@@ -127,7 +126,7 @@
     <div class="comment">
         @auth
             <div class="input">
-                <img src="{{ Storage::exists($user->image) ? Storage::url($user->image) : asset('images/Rectangle_82.png') }}"
+                <img src="{{ Storage::exists($user->image) ? Storage::url($user->image) : asset($user->image) }}"
                     alt="">
                 <form>
                     <textarea name="content" id="contentComment" cols="30" rows="10" placeholder="Comment"></textarea>

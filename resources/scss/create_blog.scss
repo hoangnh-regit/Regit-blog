@@ -12,10 +12,12 @@
   .create {
     @include mobile {
       padding: 31px 11px;
+      margin: 0;
     }
 
     @include desktop {
       padding: 31px 30px;
+      margin: 0;
     }
 
     background-color: $color-11;

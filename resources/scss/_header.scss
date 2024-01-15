@@ -9,14 +9,12 @@ header {
       height: 454.493px;
       padding: 0;
       margin-bottom: 70px;
-      object-fit: cover;
     }
   }
 
   @include desktop {
     .img {
       width: 100%;
-      object-fit: contain;
     }
 
     height: auto;
@@ -121,6 +119,12 @@ header {
       }
 
       .nav-menu {
+        &.create-blog {
+          .background {
+            background-color: $color-14;
+            color: $color-3;
+          }
+        }
         @include flexSpace();
 
         .user-btn {
@@ -133,18 +137,32 @@ header {
           .user-list {
             @include flexColumn();
             position: absolute;
-            right: 54px;
+            right: 98px;
             width: 74px;
 
+            .size {
+              &:hover {
+                background-color: $color-14;
+                color: $color-12;
+              }
+              width: 120px;
+              height: 38px;
+              border-radius: 10px;
+            }
             a {
-              border: 1px solid black;
+              border: 1px solid $color-4;
+              padding: 8px 0 0 24px;
+              background-color: $color-5;
             }
 
             #logoutBtn {
-              margin-top: 4px;
-              border: 1px solid black;
-              width: 74px;
-              background-color: white;
+              &:hover {
+                background-color: $color-14;
+                color: $color-12;
+              }
+              margin-top: 5px;
+              border: 1px solid $color-4;
+              background-color: $color-5;
             }
           }
         }
@@ -154,6 +172,7 @@ header {
         }
 
         a {
+          padding: 3px 0 0 10px;
           font-size: 16px;
           text-transform: capitalize;
           font-weight: 400;
@@ -173,7 +192,7 @@ header {
 
           input {
             &::placeholder {
-              color: #d4d1d4;
+              color: $color-29;
             }
 
             width: 100%;
@@ -210,7 +229,7 @@ header {
         .first,
         .second {
           height: 31px;
-          color: white;
+          color: $color-8;
           border-radius: 3px;
           border: none;
           margin-right: 27px;
@@ -218,12 +237,12 @@ header {
 
         .first {
           width: 51px;
-          background-color: $color-14;
         }
 
         .second {
           width: 104px;
           margin-right: 76px;
+          background-color: transparent;
         }
 
         li {
@@ -262,18 +281,5 @@ header {
         }
       }
     }
-  }
-}
-
-.create-blog {
-  form {
-    .loged {
-      background-color: rgba(255, 255, 255, 0.65) !important;
-      color: black !important;
-    }
-  }
-
-  .second {
-    background-color: $color-14;
   }
 }
