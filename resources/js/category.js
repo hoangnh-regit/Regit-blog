@@ -55,8 +55,7 @@ $(document).ready(function() {
                     </button>
                     <button class="btn btn-danger btn-delete"
                         category-delete-url="${ route }"
-                        data-category-id="${ data.id }"
-                        onclick="return confirm('are you sure')">
+                        data-category-id="${ data.id }">
                         <i class="bi bi-trash"></i>
                     </button>
                 </td>
@@ -121,17 +120,23 @@ $(document).ready(function() {
     
     $(document).on("click", '.btn-delete', function(e) {
         e.preventDefault();
+    
         const deleteUrl = $(this).attr('category-delete-url');
-        const row = $(this).closest('tr'); 
-        $.ajax({
-            url: deleteUrl,
-            type: 'DELETE',
-            success: function() {
-                row.remove();
-            },
-            error: function(xhr) {
-                console.error(xhr.responseText);
-            }  
-        });
+        const row = $(this).closest('tr');
+    
+        const userConfirmed = confirm('Are you sure you want to delete this category?');
+    
+        if (userConfirmed) {
+            $.ajax({
+                url: deleteUrl,
+                type: 'DELETE',
+                success: function() {
+                    row.remove();
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                }  
+            });
+        }
     });
 });

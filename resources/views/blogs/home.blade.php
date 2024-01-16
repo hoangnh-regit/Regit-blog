@@ -9,9 +9,11 @@
                     <option value="">--</option>
                     @foreach ($categories as $item)
                         <option value="{{ $item->id }}" @if (isset($data['category_id']) && $data['category_id'] == $item->id) selected @endif>
-                            {{ $item->name }}</option>
+                            {{ $item->name }}
+                        </option>
                     @endforeach
                 </select>
+                <input type="hidden" name="search" value="{{ request()->input('search') }}">
             </div>
         </form>
     </div>

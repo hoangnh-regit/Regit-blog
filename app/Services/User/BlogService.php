@@ -110,7 +110,7 @@ class BlogService
 
     public function getLikedBlogs(User $user): Collection
     {
-        return $user->likes()->with('category')->get();
+        return $user->likes()->with('category')->where('status', Blog::STATUS_ACTIVE)->get();
     }
 
     public function approvedBlog(Blog $blog): bool

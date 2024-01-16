@@ -1,11 +1,32 @@
 @extends('layouts.base')
 @section('content')
+    <div class="fade modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('auth.logout') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h3>{{ __('blog.logout') }}</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close btnc" data-bs-dismiss="modal">{{ __('blog.close') }}</button>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button class="delete btnc">{{ __('auth.logout') }}</button>
+                    </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div>
         <header>
             <div class="menu" id="navbar">
                 <nav class="left nav-menu">
-                    <a href="{{ route('home') }}" class="logo"><img class="img" src="{{ asset('/images/Group_155.png') }}"
-                            alt="" /></a>
+                    <a href="{{ route('home') }}" class="logo"><img class="img"
+                            src="{{ asset('/images/Group_155.png') }}" alt="" /></a>
                 </nav>
                 <nav class="right nav-menu create-blog">
                     @if (auth()->check())
@@ -14,11 +35,10 @@
                             <div class="user-btn">
                                 <p class="user"><i class="fouth bx bx-user-circle"></i></p>
                                 <div class="user-list">
-                                    <a href="{{ route('home') }}">{{ __('auth.my_profile') }}</a>
-                                    <form action="{{ route('logout') }}" method="post">
-                                        @csrf
-                                        <button id="logoutBtn">{{ __('auth.logout') }}</button>
-                                    </form>
+                                    <a class="size" href="{{ route('users.home') }}">{{ __('auth.my_profile') }}</a>
+                                    <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="size"
+                                        id="logoutBtn">{{ __('auth.logout') }}</button>
+
                                 </div>
                             </div>
                         </li>
@@ -57,36 +77,28 @@
     <div class="center">
         <div class="row ">
             <div class="col-xl-4 col-md-4">
-                <div class="card user-card-full">
-                    <div class="row m-l-0 m-r-0">
-                        <div class="col-sm-4 bg-c-lite-green user-profile">
-                            <div class="card-block text-center text-white">
-                                <div class="m-b-25">
-                                    <img src="{{ auth()->user()->getUserImageURL() }}" class="img-radius"
-                                        alt="User-Profile-Image">
-                                </div>
+                <div class="row profile">
+                    <div class="col-md-6 col-xs-12 image">
+                        <img src="{{ auth()->user()->getUserImageURL() }}" class="img-radius" alt="User-Profile-Image">
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <div class="email">
+                            <p class="">{{ __('profile.email') }}</p>
+                            <div>
+                                <p class="">{{ $response['email'] }}</p>
                             </div>
                         </div>
-                        <div class="col-sm-8">
-                            <div class="card-block">
-                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600"> {{ __('profile.profile') }} </h6>
-                                <div class="">
-                                    <p class="m-b-10 f-w-600">{{ __('profile.email') }}</p>
-                                    <h6 class="text-muted f-w-400">{{ $response['email'] }}</h6>
-                                </div>
-                                <div class="">
-                                    <p class="m-b-10 f-w-600">{{ __('profile.name') }}</p>
-                                    <h6 class="text-muted f-w-400">{{ $response['name'] }}</h6>
-                                </div>
-                                <div class="func">
-                                    <a href="{{ route('users.edit') }}" class="btn btn-success">
-                                        {{ __('profile.edit_profile') }}</a>
-                                </div>
-                                <div class="func">
-                                    <a href="{{ route('users.change_password') }}" class="btn btn-primary">
-                                        {{ __('title.change_password') }}</a>
-                                </div>
-                            </div>
+                        <div class="">
+                            <h6 class="">{{ __('profile.name') }}</h6>
+                            <p class="">{{ $response['name'] }}</p>
+                        </div>
+                        <div class="func">
+                            <a href="{{ route('users.edit') }}" class="btn btn-success">
+                                {{ __('profile.edit_profile') }}</a>
+                        </div>
+                        <div class="func">
+                            <a href="{{ route('users.change_password') }}" class="btn btn-primary">
+                                {{ __('title.change_password') }}</a>
                         </div>
                     </div>
                 </div>
@@ -104,7 +116,8 @@
                                     class="" alt="{{ __('blog.image_blog') }}" />
                                 <div class="card-body">
                                     <p>{{ optional($item->category)->name }}</p>
-                                    <a href="{{ route('blogs.show', $item) }}" class="card-title">{{ $item->title }}</a>
+                                    <a href="{{ route('blogs.show', $item) }}"
+                                        class="card-title">{{ $item->title }}</a>
                                 </div>
                             </div>
                         </div>

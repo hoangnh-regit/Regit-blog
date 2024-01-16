@@ -74,8 +74,10 @@
                                                                         <button
                                                                             class="btn btn-secondary">{{ $item->status == \App\Models\Blog::STATUS_ACTIVE ? __('blog.approved') : __('blog.approve') }}</button>
                                                                     </form>
-                                                                    <a class="btn btn-primary"
-                                                                        href="{{ route('blogs.edit', $item) }}">{{ __('blog.edit') }}</a>
+                                                                    @can('checkUpdate', $item)
+                                                                        <a class="btn btn-primary"
+                                                                            href="{{ route('blogs.edit', $item) }}">{{ __('blog.edit') }}</a>
+                                                                    @endcan
                                                                     <form action="{{ route('blogs.delete', $item) }}"
                                                                         method="post">
                                                                         @csrf

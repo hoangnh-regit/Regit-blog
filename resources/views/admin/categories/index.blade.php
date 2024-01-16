@@ -67,8 +67,7 @@
                                                                         <i class="bi bi-x-circle-fill"></i>
                                                                     </button>
                                                                     <button class="btn btn-danger btn-delete"
-                                                                        category-delete-url="{{ route('admins.categories.destroy', $item) }}"
-                                                                        onclick="return confirm('are you sure')">
+                                                                        category-delete-url="{{ route('admins.categories.destroy', $item) }}">
                                                                         <i class="bi bi-trash"></i>
                                                                     </button>
                                                                 </td>

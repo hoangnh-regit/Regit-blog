@@ -36,4 +36,5 @@
         'create' => 'Create',
         'approve' => 'Approve',
         'title' => 'Title',
+        'logout' => 'Do you want to logout?',
     ];

@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -20,7 +22,7 @@ return new class extends Migration
                 $table->text('content');
                 $table->string('img', 255)->nullable();
                 $table->bigInteger('category_id');
-                $table->boolean('status')->default(0);  //status 0 isn't active , 1 is active 
+                $table->boolean('status')->default(Blog::STATUS_INACTIVE);
                 $table->timestamps();
             }
         );

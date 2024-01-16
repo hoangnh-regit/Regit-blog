@@ -1,10 +1,26 @@
 .center {
-  margin: 144px 100px 40px 100px;
-  .img-radius {
-    border-radius: 50%;
-    height: 118px;
-    margin: 5px 0 0 5px;
+  @include desktop {
+    margin: 144px 100px 40px 100px;
   }
+  @include mobile {
+    margin: 144px 20px 40px 20px;
+  }
+
+  .profile {
+    border: 1px solid #ccc;
+    padding: 5px 0 0 0;
+    margin-bottom: 18px;
+    .image {
+      width: 124px;
+      .img-radius {
+        border-radius: 50%;
+      }
+    }
+    .email {
+      display: inline;
+    }
+  }
+
   .navbar {
     @include flexCenter;
     width: 100%;
@@ -27,8 +43,7 @@
         object-fit: cover;
       }
       .card-body {
-        .category{
-          width: 130px;
+        .category {
           height: 34px;
           padding: 5px 0 0 12px;
           border: 1px solid #ccc;

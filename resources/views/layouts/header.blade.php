@@ -1,6 +1,27 @@
 @extends('layouts.base')
 @section('title', __('title.create_blog'))
 @section('content')
+    <div class="fade modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('auth.logout') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h3>{{ __('blog.logout') }}</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close btnc" data-bs-dismiss="modal">{{ __('blog.close') }}</button>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button class="delete btnc">{{ __('auth.logout') }}</button>
+                    </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <header>
         <div class="menu" id="navbar">
             <nav class="left nav-menu">
@@ -9,7 +30,7 @@
                 <div class="form-search">
                     <form class="box" action="{{ route('home') }}" method="GET">
                         <input class="search" type="text" name="search" placeholder="Search..."
-                            value="{{ old('search') }}">
+                            value="{{ request()->input('search') }}">
                         <button type="submit"><i class="bx bx-search"></i></button>
                     </form>
                 </div>
@@ -27,13 +48,12 @@
                     <li><a class="third">{{ auth()->user()->name }}</a></li>
                     <li>
                         <div class="user-btn">
-                            <p class="user"><i class="fouth bx bx-user-circle"></i></p>
+                            <p class="user"><img src="{{ auth()->user()->getUserImageURL() }}" alt=""></p>
                             <div class="user-list">
                                 <a class="size" href="{{ route('users.home') }}">{{ __('auth.my_profile') }}</a>
-                                <form action="{{ route('logout') }}" method="post">
-                                    @csrf
-                                    <button class="size" id="logoutBtn">{{ __('auth.logout') }}</button>
-                                </form>
+                                <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="size"
+                                    id="logoutBtn">{{ __('auth.logout') }}</button>
+
                             </div>
                         </div>
                     </li>

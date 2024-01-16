@@ -22,10 +22,6 @@ class BlogController extends Controller
     ) {
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-
     public function home(Request $request)
     {
         $categories = $this->categoryService->getAll();
@@ -33,7 +29,7 @@ class BlogController extends Controller
         $blogs = $this->blogService->index($data);
         return view(self::PATH_VIEW . __FUNCTION__, compact('blogs', 'categories', 'data'));
     }
-
+     
     public function create()
     {
         $categories = $this->categoryService->getAll();
@@ -42,8 +38,8 @@ class BlogController extends Controller
     
     public function store(BlogRequest $request)
     {
-        $this->blogService->store($request->only('title', 'content', 'category_id', 'img'));
-        return redirect()->route('home')->with('success', __('blog.blog_created'));
+        $data = $this->blogService->store($request->only('title', 'content', 'category_id', 'img'));
+        return redirect()->route('blogs.show', $data->id)->with('success', __('blog.blog_created'));
     }
 
     public function show(Blog $blog)
@@ -65,7 +61,7 @@ class BlogController extends Controller
     {
         $this->authorize('checkUpdate', $blog);
         $this->blogService->update($request, $blog);
-        return redirect()->route('blogs.show', $blog)->with('succcess', __('blog.blog_updated'));
+        return redirect()->route('blogs.show', $blog)->with('success', __('blog.blog_updated'));
     }
 
     public function destroy(Blog $blog)
