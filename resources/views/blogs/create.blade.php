@@ -43,7 +43,7 @@
                 @enderror
             </div>
             <div class="form-input submit">
-                <button>{{ __('blog.submit') }}</button>
+                <button>{{ __('title.create_blog') }}</button>
             </div>
         </form>
     </div>

@@ -83,7 +83,7 @@
             </div>
             <div class="navbar-links">
                 <ul>
-                    <li><a href="">T{{ __('auth.top') }}</a></li>
+                    <li><a href="{{route('home')}}">{{ __('auth.top') }}</a></li>
                     <li><a href="{{ route('blogs.create') }}">{{ __('title.create_blog') }}</a></li>
                 </ul>
             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Services\Admin\UserService;
 use App\Http\Controllers\Controller;
 
@@ -15,9 +16,10 @@ class UserController extends Controller
     ) {
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->userService->getAll();
+       
+        $users = $this->userService->getAll($request->only('search'));
         return view(self::PATH_VIEW.__FUNCTION__, compact('users'));
     }
 

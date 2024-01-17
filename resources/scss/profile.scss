@@ -46,10 +46,11 @@
         .category {
           height: 34px;
           padding: 5px 0 0 12px;
+          margin-bottom: 10px;
           border: 1px solid #ccc;
           border-radius: 50px;
         }
-        height: 120px;
+        height: 90px;
       }
     }
   }
@@ -72,6 +73,7 @@
       display: -webkit-box;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
+      font-family: $font-gyloy;
     }
   }
 }

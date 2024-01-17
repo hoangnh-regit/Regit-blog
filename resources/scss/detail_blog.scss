@@ -180,8 +180,9 @@
         text-decoration: none;
         overflow: hidden;
         display: -webkit-box;
-        -webkit-line-clamp: 1;
+        -webkit-line-clamp: 1 ;
         -webkit-box-orient: vertical;
+        font-family: $font-gyloy;
       }
     }
   }

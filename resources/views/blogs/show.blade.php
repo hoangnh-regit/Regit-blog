@@ -70,7 +70,7 @@
                         </div>
                     @endcan
                     @can('checkDelete', $blog)
-                          <div class="fn">
+                        <div class="fn">
                             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                 class="delete">{{ __('blog.delete_blog') }}</button>
                         </div>
@@ -84,7 +84,7 @@
             class="" alt="Image of blog" />
     </div>
     <div class="description">
-        <p>{{ $blog->content }}</p>
+        {!! $blog->content !!}
     </div>
     <div class="like" data-like-route="{{ route('blogs.like', $blog->id) }}">
         @auth

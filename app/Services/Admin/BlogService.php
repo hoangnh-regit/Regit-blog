@@ -3,10 +3,11 @@
 namespace App\Services\Admin;
 
 use App\Models\Blog;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class BlogService
 {
-    public function index(array $filters)
+    public function index(array $filters): LengthAwarePaginator
     {
         $query = Blog::with('user', 'category')
             ->select('id', 'title', 'category_id', 'user_id', 'img', 'status', 'created_at');
@@ -16,7 +17,6 @@ class BlogService
         if (data_get($filters, 'date')) {
             $query->whereDate('created_at', $filters['date']);
         }
-        $blogs = $query->latest()->paginate(5)->appends($filters);
-        return $blogs;
+        return $query->latest()->paginate(config('length.paginate'))->appends($filters);
     }
 }

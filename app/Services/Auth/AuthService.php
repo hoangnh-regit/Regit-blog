@@ -70,7 +70,7 @@ class AuthService
             $password = $data['password'];
             if ($user) {
                 if (Hash::check($password, $user->password)) {
-                    if (empty($user->email_verified_at)) {
+                    if ($user->status == User::STATUS_INACTIVE) {
                         return __('auth.verify_check_mail');
                     }
                     
@@ -93,7 +93,11 @@ class AuthService
     {
         try {
             $user = User::where('email', $data['email'])->first();
-            if ($user && !empty($user->email_verified_at)) {
+            
+            if ($user && $user->status == User::STATUS_ACTIVE) {
+                if ($user->status == User::STATUS_BLOCKED) {
+                    return __('auth.account_block');
+                }
                 $password = Str::random(12);
                 $user->update([
                     'password' => Hash::make($password),

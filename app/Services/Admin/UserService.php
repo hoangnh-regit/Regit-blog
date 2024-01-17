@@ -7,9 +7,16 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserService
 {
-    public function getAll(): LengthAwarePaginator
+    public function getAll(array $data): LengthAwarePaginator
     {
-        return User::byUserRole()->latest()->paginate(config('length.paginate'));
+        $query = User::byUserRole();
+        if (data_get($data, 'search')) {
+            $query->where(function ($query) use ($data) {
+                $query->where('name', 'like', '%' . $data['search'] . '%')
+                    ->orWhere('email', 'like', '%' . $data['search'] . '%');
+            });
+        }
+        return $query->paginate(config('length.paginate'));
     }
 
     public function blockUser(User $user): bool

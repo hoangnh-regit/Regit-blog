@@ -8,6 +8,13 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">List users</h3>
+                                <div class="filter">
+                                    <form action="{{ route('admins.users.index') }}" method="get">
+                                        <input class="search" type="text" name="search" placeholder="Search..."
+                                            value="{{ request()->input('search') }}">
+                                        <button class="user-search" type="submit">Search</button>
+                                    </form>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -22,7 +29,7 @@
                                                     <tr>
                                                         <th scope="col">{{ __('admin.id') }}</th>
                                                         <th scope="col">{{ __('admin.name') }}</th>
-                                                        <th scope="col">{{ __('admin.emai') }}</th>
+                                                        <th scope="col">{{ __('admin.email') }}</th>
                                                         <th scope="col">{{ __('admin.image') }}</th>
                                                         <th scope="col">{{ __('admin.status') }}</th>
 
@@ -38,7 +45,8 @@
                                                                         href="#">{{ $item->name }}</a>
                                                                 </td>
                                                                 <td>{{ $item->email }}</td>
-                                                                <td><img class="avatar" src="{{ $item->getUserImageURL() }}"
+                                                                <td><img class="avatar"
+                                                                        src="{{ $item->getUserImageURL() }}"
                                                                         alt=""></td>
                                                                 <td>
                                                                     <label class="switch">
@@ -56,7 +64,9 @@
                                                     </div>
                                                 </tbody>
                                             </table>
-                                            {{ $users->links() }}
+                                            @if (!empty($users))
+                                                {{ $users->links() }}
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

@@ -1,11 +1,11 @@
 <ul class="pagination">
     @if ($paginator->onFirstPage())
-        <li class="pa-dis">
+        <li class="pa-dis next-btn">
             <a href="#" disabled><i class="bi bi-chevron-left"></i></a>
         </li>
     @else
         <li class="pa-left">
-            <a href="{{ $paginator->previousPageUrl() }}"><i class="bi bi-chevron-left"></i></a>
+            <a class="page" href="{{ $paginator->previousPageUrl() }}"><i class="bi bi-chevron-left"></i></a>
         </li>
     @endif
     @foreach ($elements as $element)
@@ -20,7 +20,7 @@
                     </li>
                 @else
                     <li>
-                        <a href="{{ $url }}">{{ $page }}</a>
+                        <a class="page" href="{{ $url }}">{{ $page }}</a>
                     </li>
                 @endif
             @endforeach
@@ -28,7 +28,7 @@
     @endforeach
     @if ($paginator->hasMorePages())
         <li class="pa-left">
-            <a href="{{ $paginator->nextPageUrl() }}"><i class="bi bi-chevron-right"></i></a>
+            <a class="page" href="{{ $paginator->nextPageUrl() }}"><i class="bi bi-chevron-right"></i></a>
         </li>
     @else
         <li class="pa-dis">

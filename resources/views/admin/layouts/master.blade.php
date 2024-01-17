@@ -9,6 +9,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+    @include('components.message')
     <div class="wrapper">
         @include('admin.layouts.header')
         @include('admin.layouts.sidebar')

@@ -30,7 +30,7 @@ class AuthController extends Controller
     {
         $response = $this->authService->register($request->only('name', 'email', 'password'));
         if ($response) {
-            return redirect()->route('register')->with('success', __('auth.verify_check_mail'));
+            return redirect()->route('login')->with('success', __('auth.verify_check_mail'));
         }
         return redirect()->route('register')->with('error', __('auth.email_unregistered'));
     }
@@ -39,9 +39,9 @@ class AuthController extends Controller
     {
         $response = $this->authService->verifyEmail($token);
         if (is_string($response)) {
-            return redirect()->route('register')->with('error', $response);
+            return redirect()->route('login')->with('error', $response);
         }
-        return redirect()->route('register')->with('success', __('auth.verified'));
+        return redirect()->route('login')->with('success', __('auth.verified'));
     }
 
     public function postLogin(LoginRequest $request)

@@ -115,7 +115,10 @@
                                 <img src="{{ Storage::exists($item->img) ? Storage::url($item->img) : asset($item->img) }}"
                                     class="" alt="{{ __('blog.image_blog') }}" />
                                 <div class="card-body">
-                                    <p>{{ optional($item->category)->name }}</p>
+                                    <div class="category">
+                                        <span><i class="bi bi-list"></i></span>
+                                        <p>{{ optional($item->category)->name }}</p>
+                                    </div>
                                     <a href="{{ route('blogs.show', $item) }}"
                                         class="card-title">{{ $item->title }}</a>
                                 </div>
@@ -132,7 +135,7 @@
                                         class="" alt="{{ __('blog.image_blog') }}" />
                                     <div class="card-body">
                                         <div class="category">
-                                            <span><i class="bi bi-bookshelf"></i></span>
+                                            <span><i class="bi bi-list"></i></span>
                                             <p>{{ optional($item->category)->name }}</p>
                                         </div>
                                         <a href="{{ route('blogs.show', $item) }}"
