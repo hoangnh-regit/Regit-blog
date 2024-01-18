@@ -13,4 +13,5 @@
         'image' => 'Image',
         'users' => 'Users',
         'list_users' => 'List Users',
+        'blog_updated' => 'Blog has been updated',
     ];

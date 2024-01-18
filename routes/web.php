@@ -67,7 +67,7 @@ Route::middleware(['auth','admin'])->group(function () {
     });
     Route::group(['as' => 'admins.', 'prefix' => 'admins'], function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
-        Route::get('/blog/list', [BlogControllerAdmin::class, 'list'])->name('blog.list');
+        Route::resource('blogs', BlogControllerAdmin::class);
         Route::resource('categories', CategoryControllerAdmin::class);
         Route::resource('users', UserControllerAdmin::class);
     });

@@ -13,4 +13,7 @@
         'change_password' => 'Change password',
         'likes' => 'Likes',
         'comments' => 'Comments',
+        'admin' => 'Admin',
+        'blog' => 'Blog',
+        'edit_blog' => 'Edit Blog',
     ];

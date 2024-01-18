@@ -2,13 +2,14 @@
 <section class="content">
     <div>
         <ul class="breadcrumb">
-            <li><a href="">{{ __('title.home') }}</a></li>
-            <li><a href="">{{ __('title.create_blog') }}</a></li>
+            <li><a href="{{ route('admins.index') }}">{{ __('title.admin') }}</a></li>
+            <li><a class="second-li" href="{{ route('admins.blogs.index') }}">{{ __('title.blog') }}</a></li>
+            <li><a>{{ __('title.create_blog') }}</a></li>
         </ul>
     </div>
     <div class="create">
         <h1>{{ __('title.create_blog') }}</h1>
-        <form action="{{ route('blogs.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admins.blogs.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-input category">
                 <label for="">{{ __('blog.category') }} <span>*</span></label>
@@ -35,11 +36,24 @@
                     <div class="error">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="form-input description">
                 <label for="">{{ __('blog.description') }} <span>*</span></label>
                 <textarea class="place" name="content" id="" cols="30" rows="10"
                     placeholder="{{ __('blog.description') }}">{{ old('content') }}</textarea>
                 @error('content')
+                    <div class="error">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-input">
+                <div class="status">
+                    <input type="radio" name="status" id="status-1"
+                        value="{{ \App\Models\Blog::STATUS_INACTIVE }}">
+                    <label for="status-1">INACTIVE</label>
+                    <input type="radio" name="status" id="status-2" value="{{ \App\Models\Blog::STATUS_ACTIVE }}">
+                    <label for="status-2">ACTIVE</label>
+                </div>
+                @error('status')
                     <div class="error">{{ $message }}</div>
                 @enderror
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Http\Requests\AuthRequest;
 use App\Services\Auth\AuthService;
 use App\Http\Requests\LoginRequest;
@@ -50,7 +51,11 @@ class AuthController extends Controller
         if (is_string($response)) {
             return redirect()->route('login')->with('error', $response);
         }
-        return redirect()->route('home');
+        if ($response->role == User::ADMIN_ROLE) {
+            return redirect()->route('admins.index');
+        } else {
+            return redirect()->route('home');
+        }
     }
 
     public function logout()

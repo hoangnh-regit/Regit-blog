@@ -1,7 +1,7 @@
 <ul class="pagination">
     @if ($paginator->onFirstPage())
         <li class="pa-dis next-btn">
-            <a href="#" disabled><i class="bi bi-chevron-left"></i></a>
+            <a disabled><i class="bi bi-chevron-left"></i></a>
         </li>
     @else
         <li class="pa-left">
@@ -32,7 +32,7 @@
         </li>
     @else
         <li class="pa-dis">
-            <a href="#"><i class="bi bi-chevron-right"></i></a>
+            <a disabled><i class="bi bi-chevron-right"></i></a>
         </li>
     @endif
 </ul>

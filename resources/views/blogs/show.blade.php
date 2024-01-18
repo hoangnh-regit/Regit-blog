@@ -7,7 +7,7 @@
         </ul>
     </div>
 </section>
-<div class="fade modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="fade modal" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
@@ -51,27 +51,30 @@
                 </div>
                 @php $user = auth()->user() @endphp
                 @if ($user->id === $blog->user_id || $user->role === \App\Models\User::ADMIN_ROLE)
-                    <div class="fn ">
+                    <div class="fn approve">
                         @can('isAdmin', $user)
                             <form action="{{ route('blogs.approved', $blog) }}" method="post">
                                 @csrf
                                 @method('put')
-                                <button
-                                    class="approved">{{ $blog->status == \App\Models\Blog::STATUS_ACTIVE ? __('blog.approved') : __('blog.not_approved') }}</button>
+                                @if ($blog->status == \App\Models\Blog::STATUS_ACTIVE)
+                                    <button class="approved">{{ __('blog.approved') }}</button>
+                                @else
+                                    <button class="not-approved">{{ __('blog.not_approved') }}</button>
+                                @endif
                             </form>
                         @else
                             <button
-                                class="approved">{{ $blog->status == \App\Models\Blog::STATUS_ACTIVE ? __('blog.approved') : __('blog.not_approved') }}</button>
+                                class="not-approved">{{ $blog->status == \App\Models\Blog::STATUS_ACTIVE ? __('blog.approved') : __('blog.not_approved') }}</button>
                         @endcan
                     </div>
                     @can('checkUpdate', $blog)
-                        <div class="fn">
+                        <div class="fn approve">
                             <a class="edit" href="{{ route('blogs.edit', $blog) }}">{{ __('blog.edit') }}</a>
                         </div>
                     @endcan
                     @can('checkDelete', $blog)
                         <div class="fn">
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#deleteModal"
                                 class="delete">{{ __('blog.delete_blog') }}</button>
                         </div>
                     @endcan

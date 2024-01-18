@@ -38,7 +38,7 @@ header {
 
         .search-btn {
           i {
-            color: #a7a7a7;
+            color: $color-19;
             font-size: 19px;
           }
         }
@@ -130,10 +130,10 @@ header {
         .user-btn {
           .user {
             padding-left: 10px;
-            img{
+            img {
               width: 40px;
               border-radius: 50%;
-              object-fit: cover ;
+              object-fit: cover;
             }
           }
           .user-list {
@@ -147,14 +147,14 @@ header {
             position: absolute;
             right: 98px;
             width: 74px;
-
             .size {
+              background-color: $color-3;
+              width: 120px;
+              height: 38px;
               &:hover {
                 background-color: $color-14;
                 color: $color-12;
               }
-              width: 120px;
-              height: 38px;
             }
             a {
               border: 1px solid $color-4;
@@ -168,7 +168,6 @@ header {
                 color: $color-12;
               }
               border: 1px solid $color-4;
-              background-color: $color-27;
             }
           }
         }
@@ -226,7 +225,7 @@ header {
             position: absolute;
 
             i {
-              color: #a7a7a7;
+              color: $color-19;
               font-size: 19px;
             }
           }

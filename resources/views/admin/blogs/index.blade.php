@@ -9,7 +9,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">{{ __('title.list_blog') }}</h3>
                                 <div class="filter">
-                                    <form action="{{ route('admins.blog.list') }}" method="get">
+                                    <form action="{{ route('admins.blogs.index') }}" method="get">
                                         <select name="status" id="status">
                                             <option value="">{{ __('blog.all') }}</option>
                                             <option value="{{ App\Models\Blog::STATUS_ACTIVE }}"
@@ -44,7 +44,7 @@
                                                         <th scope="col">{{ __('blog.status') }}</th>
                                                         <th scope="col">{{ __('blog.date') }}</th>
                                                         <th class="add" scope="col"><a class="btn btn-success"
-                                                                href="{{ route('blogs.create') }}">{{ __('blog.create') }}</a>
+                                                                href="{{ route('admins.blogs.create') }}">{{ __('blog.create') }}</a>
                                                         </th>
                                                     </tr>
                                                 </thead>
@@ -64,7 +64,7 @@
                                                                 </td>
                                                                 <td>{{ $item->status == App\Models\Blog::STATUS_ACTIVE ? 'Active' : 'Inactive' }}
                                                                 </td>
-                                                                <td>{{ $item->created_at->diffForHumans() }}
+                                                                <td>{{ $item->created_at->format('Y-m-d') }}
                                                                 </td>
                                                                 <td>
                                                                     <form action="{{ route('blogs.approved', $item) }}"
@@ -76,7 +76,7 @@
                                                                     </form>
                                                                     @can('checkUpdate', $item)
                                                                         <a class="btn btn-primary"
-                                                                            href="{{ route('blogs.edit', $item) }}">{{ __('blog.edit') }}</a>
+                                                                            href="{{ route('admins.blogs.edit', $item) }}">{{ __('blog.edit') }}</a>
                                                                     @endcan
                                                                     <form action="{{ route('blogs.delete', $item) }}"
                                                                         method="post">
@@ -86,7 +86,6 @@
                                                                             onclick="return confirm('are you sure')">{{ __('blog.delete') }}</button>
                                                                     </form>
                                                                 </td>
-
                                                             </tr>
                                                         @endforeach
                                                     </div>

@@ -25,7 +25,7 @@
         'my_profile' => 'My Profile',
         'sign_up' => 'Sign up',
         'sign_in' => 'Sign in',
-        'your_blog' => 'Your Blogs',
+        'my_blog' => 'My Blogs',
         'liked' => 'Liked',
         'profile_update' => 'Profile updated successfully',
         'cancel' => 'Cancel',

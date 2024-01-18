@@ -6,7 +6,10 @@
   li {
     display: inline;
     font-size: 16px;
-
+    .second-li {
+      @include fontStyle($color-16, $font-noto-san-jp, 16px, 400);
+      text-decoration: none;
+    }
     &:not(:last-child)::after {
       padding: 0px;
       content: " > ";

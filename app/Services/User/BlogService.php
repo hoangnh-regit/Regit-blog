@@ -33,19 +33,23 @@ class BlogService
         }
     }
 
-    public function store(array $data): Blog
+    public function store(array $data)
     {
         try {
             $imageName = 'images/Rectangle_82.png';
             if (isset($data['img'])) {
                 $imageName = $data['img']->store(self::PATH_UPLOAD);
             }
-
+            $status = Blog::STATUS_INACTIVE;
+            if (data_get($data, 'status')) {
+                $status = $data['status'];
+            }
             return Blog::create([
                 'title' => $data['title'],
                 'content' => $data['content'],
                 'category_id' => $data['category_id'],
                 'img' => $imageName,
+                'status' => $status,
                 'user_id' => auth()->user()->id,
             ]);
         } catch (Exception $e) {

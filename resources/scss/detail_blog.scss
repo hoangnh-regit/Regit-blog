@@ -90,12 +90,17 @@
       }
 
       @include desktop {
-        width: 380px;
       }
 
       .fn {
         width: 110px;
         height: 100%;
+        &.approve {
+          margin-right: 32px;
+        }
+        .approved {
+          background-color: $color-24;
+        }
         button,
         a {
           display: block;
@@ -107,7 +112,7 @@
           border-radius: 3px;
         }
         .edit {
-          background-color: $color-24;
+          background-color: $color-30;
           padding-top: 4px;
           text-align: center;
           text-decoration: none;
@@ -135,6 +140,9 @@
   }
 
   .like {
+    .bi-heart-fill {
+      color: $color-1;
+    }
     button,
     a {
       font-size: 30px;
@@ -180,7 +188,7 @@
         text-decoration: none;
         overflow: hidden;
         display: -webkit-box;
-        -webkit-line-clamp: 1 ;
+        -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         font-family: $font-gyloy;
       }

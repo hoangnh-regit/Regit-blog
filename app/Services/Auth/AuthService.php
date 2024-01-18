@@ -63,7 +63,7 @@ class AuthService
         }
     }
 
-    public function login(array $data): bool | string
+    public function login(array $data): User | string
     {
         try {
             $user = User::where('email', $data['email'])->orWhere('name', $data['email'])->first();
@@ -78,8 +78,8 @@ class AuthService
                         return __('auth.account_block');
                     }
 
-                    Auth::login($user, array_key_exists('remember', $data)?true:false);
-                    return true;
+                    Auth::login($user, array_key_exists('remember', $data) ? true : false);
+                    return $user;
                 }
                 return __('auth.error');
             }

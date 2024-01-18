@@ -1,5 +1,4 @@
 @extends('layouts.base')
-@section('title', __('title.create_blog'))
 @section('content')
     <div class="fade modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
@@ -83,7 +82,7 @@
             </div>
             <div class="navbar-links">
                 <ul>
-                    <li><a href="{{route('home')}}">{{ __('auth.top') }}</a></li>
+                    <li><a href="{{ route('home') }}">{{ __('auth.top') }}</a></li>
                     <li><a href="{{ route('blogs.create') }}">{{ __('title.create_blog') }}</a></li>
                 </ul>
             </div>
