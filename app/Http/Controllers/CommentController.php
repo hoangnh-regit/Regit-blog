@@ -20,7 +20,9 @@ class CommentController extends Controller
     {
         $user = auth()->user();
         $response = $this->commentService->store($request->only('content'), $blogId);
-        return response()->json(['data' => $response, 'user' => $user]);
+        $comments = $response['list_comments'];
+        $tableView = view('components.comments', compact('comments'))->render();
+        return response()->json(['data' => $response, 'user' => $user, 'tableView' => $tableView]);
     }
 
     public function update(CommentRequest $request, int $id)
